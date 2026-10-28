@@ -1,0 +1,165 @@
+/* Ajustes do resumo original para o popover estreito do Owlbear. */
+.pl-root.ow-ficha { padding:14px; border:1px solid var(--afinidade-cor,#a99161); border-radius:8px; color:#f5f0e6; background-color:#211e19; min-width:0; }
+.ow-ficha .frc-identidade { margin-bottom:12px; gap:12px; }
+.ow-ficha .frc-identidade img { width:76px; height:86px; object-fit:cover; border:1px solid var(--afinidade-cor,#a99161); }
+.ow-ficha .frc-identidade h2 { margin:0 0 5px; font-size:21px; }
+.ow-ficha .frc-identidade p { margin:0; font-size:11px; line-height:1.5; }
+.ow-ficha .frc-identidade small { font-size:10px; letter-spacing:1px; color:var(--afinidade-cor,#d9c28c); }
+.ow-ficha .ow-turno { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:9px; background:#0006; border-radius:5px; font-size:12px; margin-bottom:12px; }
+.ow-ficha .ow-turno b { margin-left:5px; font-size:17px; }
+.ow-ficha .ow-turno > strong { color:var(--afinidade-cor,#e8c888); font-size:10px; align-self:center; }
+.ow-ficha .ow-recurso h3 { margin:10px 0 3px; text-align:left; font-size:11px; letter-spacing:1.5px; }
+.ow-ficha .frc-barra-editavel { display:flex; align-items:center; min-height:40px; }
+.ow-ficha .frc-recurso-centro { flex:1; min-width:0; text-align:center; position:relative; z-index:1; }
+.ow-ficha .frc-recurso-centro > strong { font-size:17px; }
+.ow-ficha .frc-barra-editavel > button { flex:0 0 30px; min-width:0; padding:4px 0; font-size:24px; color:white; background:transparent; border:0; z-index:2; }
+.ow-ficha .frc-barra-editavel > button:disabled { opacity:.4; cursor:wait; }
+.ow-ficha .frc-excedente { margin-left:5px; color:#bfe5ff; font-size:11px; }
+.ow-ficha .frc-abas { gap:5px; margin:14px 0 10px; }
+.ow-ficha .frc-abas > button { flex:1 0 28%; font-size:11px; padding:8px 5px; color:#eee; background:#0007; border:1px solid #ffffff30; }
+.ow-ficha .frc-abas > button[aria-pressed="true"] { background:#ffffff15; border-color:var(--afinidade-cor,#b69d58); box-shadow:inset 0 -2px var(--afinidade-cor,#b69d58); }
+.ow-ficha .ow-conteudo { padding:9px; background:#0003; border-radius:6px; }
+.ow-ficha .ow-ajustes { margin:5px 0; padding:5px 0; border:0; background:transparent; font-size:11px; }
+.ow-ficha .ow-ajustes label { display:block; margin-top:8px; }
+.ow-ficha .ow-ajustes input { max-width:90px; margin-left:10px; }
+.ow-ficha .ow-erro { padding:9px; background:#6b2525; color:white; border-radius:5px; font-size:12px; }
+.ow-ficha .ow-atributo-leitura { display:flex; width:100%; height:100%; flex-direction:column; align-items:center; justify-content:center; position:relative; z-index:3; cursor:default; }
+.ow-ficha .ow-atributo-leitura span { font-size:11px; font-weight:700; }
+.ow-ficha .ow-atributo-leitura strong { font-size:28px; line-height:1.2; }
+.ow-ficha .ow-atributos-simples { display:flex; flex-wrap:wrap; gap:7px; margin:12px 0; }
+.ow-ficha .ow-atributos-simples > div { flex:1; text-align:center; padding:10px 5px; border:1px solid var(--afinidade-cor,#b69d58); background:#0007; border-radius:6px; }
+.ow-ficha .ow-atributos-simples small,.ow-ficha .ow-atributos-simples strong { display:block; }
+.ow-ficha .ow-atributos-simples strong { font-size:24px; }
+.ow-ficha .frc-defesas { gap:7px; }
+.ow-ficha .frc-defesas > div { padding:9px 5px; font-size:11px; }
+.ow-ficha .frc-defesas strong { font-size:21px; }
+.ow-ficha details { overflow-wrap:anywhere; }
+.ow-ficha button:focus-visible { outline:2px solid var(--afinidade-cor,#b69d58); outline-offset:2px; }
+.painel-ficha-token { padding:8px; }
+.painel-ficha-token > .cabecalho { border:0; margin:0 0 6px; padding:0 2px 4px; }
+.painel-ficha-token > .cabecalho h1 { display:none; }
+.painel-ficha-token > .cabecalho .etiqueta { font-size:9px; }
+.painel-ficha-token > .cabecalho button { padding:3px 9px; }
+/* Controles e cartões da segunda versão. */
+.ow-ficha .ow-campos-recurso {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px;}
+.ow-ficha .ow-campos-recurso label {display:flex;flex-direction:column;gap:5px;font-size:11px;min-width:0;}
+.ow-ficha .ow-campos-recurso input {width:100%;box-sizing:border-box;}
+.ow-ficha .ow-campos-recurso input[readonly] {opacity:.8;}
+.ow-ficha .ow-busca {width:100%;box-sizing:border-box;margin:0 0 12px;padding:10px;background:#191919;color:#eee;border:1px solid var(--afinidade-cor,#b69d58);border-radius:4px;}
+.ow-ficha .ow-ajuda {font-size:10px;opacity:.85;line-height:1.5;}
+.ow-ficha .pl-ataque-topo {display:flex;align-items:center;gap:8px;}
+.ow-ficha .pl-ataque-dado {background:transparent!important;padding:4px;border:0;color:inherit;flex-shrink:0;line-height:1;}
+.ow-ficha .pl-ataque-dado:disabled {opacity:.35;cursor:not-allowed;}
+.ow-ficha .pl-ataque-dado svg {display:block;}
+.ow-ficha .pl-etiqueta-elemento {display:inline-block;padding:3px 5px;font:700 8px Arial;margin-left:6px;border-radius:2px;vertical-align:middle;}
+.ow-ficha .ow-imagens {display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:10px 0 18px;}
+.ow-ficha .ow-imagens button {padding:10px;background:#a58a39;border:0;}
+.ow-ficha .ow-imagens img {display:block;object-fit:contain;max-width:180px;max-height:180px;}
+.ow-ficha .pl-ritual-simbolo .ow-imagens img {max-width:85px;max-height:95px;}
+.ow-ficha .pl-ritual-simbolo .ow-imagens {margin:0;}
+.ow-ficha .ow-imagem-overlay {position:fixed;inset:0;z-index:1000;background:#000e;display:grid;place-items:center;padding:15px;}
+.ow-ficha .ow-imagem-overlay>img {max-width:95%;max-height:90vh;object-fit:contain;}
+.ow-ficha .ow-imagem-overlay>button {position:absolute;top:10px;right:10px;font-size:24px;}
+.ow-ficha .ow-tabela {overflow-x:auto;max-width:100%;}
+.ow-ficha .ow-tabela table {min-width:640px;width:100%;}
+.ow-ficha .ow-tabela td {padding:8px 4px;}
+.ow-ficha .ow-tabela th {font-size:10px;}
+.ow-ficha .ow-tabela input,.ow-ficha .ow-tabela select {width:100%;min-width:48px;font-size:10px;padding:5px;}
+.ow-ficha .ow-tabela td:first-child {min-width:120px;}
+.ow-ficha .ow-tabela td:nth-child(2) {min-width:90px;}
+.ow-ficha .ow-tabela .pl-rolar {color:inherit;display:flex;align-items:center;gap:4px;background:none;border:0;white-space:nowrap;}
+.ow-ficha .ow-tabela .pl-rolar svg {width:15px;height:15px;}
+.ow-ficha .frc-penalidade {display:block;color:#f3d356;font-size:9px;}
+.ow-ficha .ow-rolagem-ritual {display:flex;align-items:center;gap:8px;background:transparent;border:0;padding:5px;color:inherit;}
+.ow-ficha .pl-habilidade-cartao {padding:12px 0;margin:0;}
+.ow-ficha .pl-habilidade-cartao h2 {font-size:16px;text-decoration:none;}
+.ow-ficha .pl-habilidade-etiquetas {gap:6px;}
+.ow-ficha .pl-habilidade-etiquetas>span {border:1px solid var(--afinidade-cor,#b69d58);background:transparent;color:#eee;border-radius:3px;font-size:9px;}
+.ow-ficha .pl-habilidade-cartao footer {text-decoration:underline;}
+.ow-ficha .frc-resultado {position:relative;bottom:auto;font-size:12px;background:#15120ff0;}
+.ow-ficha .ow-fechar-resultado {float:right;padding:2px 7px;}
+.ow-ficha .ow-atributos-simples>button {flex:1;padding:10px 5px;background:#0007;border:1px solid var(--afinidade-cor,#b69d58);color:inherit;}
+.ow-ficha .ow-atributos-simples>button small,.ow-ficha .ow-atributos-simples>button strong {display:block;}
+.ow-ficha .ow-atributos-simples>button strong {font-size:24px;}
+@media(max-width:480px){.ow-ficha .ow-tabela table{min-width:600px;}.ow-ficha .pl-ritual-simbolo{float:right;max-width:110px;}}
+.ow-cabecalho-movel {cursor:grab;touch-action:none;user-select:none;background:#34302c;padding:10px!important;border-radius:6px;position:sticky;top:0;z-index:20;}
+.ow-cabecalho-movel:active {cursor:grabbing;}
+.ow-cabecalho-movel button {cursor:pointer;touch-action:manipulation;}
+.ow-aviso-movimento {font-size:11px;padding:8px;background:#493c22;}
+.notificacao-compartilhada .pl-notificacao-dados {
+  position: fixed;
+  bottom: 16px;
+  z-index: 10000;
+}
+
+.notificacao-compartilhada .pl-notificacao-valor {
+  margin: 0;
+  background: transparent;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-radius: 0;
+}
+
+.notificacao-compartilhada .pl-notificacao-valor > summary {
+  padding: 0;
+  background: transparent;
+}
+
+.notificacao-compartilhada .pl-notificacao-dados > header > button {
+  color: white;
+  cursor: pointer;
+}
+.ow-controle-acoes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.ow-controle-acoes-botoes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ow-controle-acoes-botoes > button {
+  display: grid;
+  place-items: center;
+  min-width: 30px;
+  min-height: 30px;
+  padding: 2px 8px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.ow-controle-acoes small {
+  max-width: 220px;
+  font-size: 11px;
+  text-align: center;
+}
+
+.ow-controle-acoes [role="alert"] {
+  color: #ffb4b4;
+}
+.ow-controle-iniciativa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.ow-controle-iniciativa > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 5px 10px;
+}
+
+.ow-controle-iniciativa [role="alert"] {
+  max-width: 230px;
+  color: #ffb4b4;
+  font-size: 11px;
+  text-align: center;
+}

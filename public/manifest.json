@@ -1,0 +1,14 @@
+{
+  "name": "Arquivo Confidencial",
+  "version": "0.3.0",
+  "manifest_version": 1,
+  "description": "Fichas e combate do Arquivo Confidencial.",
+  "background_url": "https://fuuhwan.github.io/arquivo-confidencial-owlbear/?modo=fundo",
+  "action": {
+    "title": "Arquivo Confidencial",
+    "icon": "https://fuuhwan.github.io/arquivo-confidencial-owlbear/icon.svg",
+    "popover": "https://fuuhwan.github.io/arquivo-confidencial-owlbear/",
+    "height": 600,
+    "width": 440
+  }
+}

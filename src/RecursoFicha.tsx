@@ -1,0 +1,14 @@
+import { useState } from 'react';
+import BarraRecurso from './components/ficha-tematica/BarraRecurso';
+import type { CampoRecurso } from './lib/editar-recurso';
+type Props={campo:'vida'|'determinacao';atual:number;maximo:number;temporarioTotal?:number;temporarioAtual?:number;permiteTemporario:boolean;salvando:boolean;editar:(campo:CampoRecurso,valor:number,modo:'somar'|'definir')=>Promise<void>};
+export default function RecursoFicha({campo,atual,maximo,temporarioTotal=0,temporarioAtual=0,permiteTemporario,salvando,editar}:Props) {
+  const [passo,setPasso]=useState(5);
+  const titulo=campo==='vida'?'Vida':'Determinação';
+  function salvarAtual(input:HTMLInputElement) {
+    const texto=input.value.trim(),n=Number(texto);
+    if(!texto||!Number.isSafeInteger(n)){input.value=String(atual);return;}
+    if(n!==atual)void editar(campo,n,'definir');
+  }
+  return <section className="ow-recurso"><h3>{titulo.toUpperCase()}</h3><BarraRecurso titulo={titulo} atual={atual} maximo={maximo} cor={campo==='vida'?'#ad2727':'#315c91'} passo={passo} variante="resumida" salvando={salvando} temporario={temporarioAtual} onSomar={v=>editar(campo,v,'somar')}/><details className="frc-edicao-recurso"><summary>Editar valores</summary><div className="frc-edicao-recurso-campos ow-campos-recurso"><label><span>{titulo} atual</span><input key={`atual-${atual}`} type="number" step={1} defaultValue={atual} disabled={salvando} onBlur={e=>salvarAtual(e.currentTarget)} onKeyDown={e=>{if(e.key==='Enter')e.currentTarget.blur();if(e.key==='Escape'){e.currentTarget.value=String(atual);e.currentTarget.blur();}}}/></label><label><span>{titulo} máximo</span><input type="number" value={maximo} readOnly title="Máximo definido na ficha original do Arquivo Confidencial"/></label><label><span>Passo « / »</span><input type="number" min={1} step={1} value={passo} onChange={e=>{const n=e.target.valueAsNumber;if(Number.isSafeInteger(n)&&n>=1)setPasso(n);}}/></label>{permiteTemporario&&<label><span>{campo==='vida'?'Vida temporária':'Determinação temporária'}</span><input key={`temp-${temporarioTotal}`} type="number" min={0} step={1} defaultValue={temporarioTotal} disabled={salvando} onKeyDown={e=>{if(e.key==='Enter')e.currentTarget.blur();if(e.key==='Escape'){e.currentTarget.value=String(temporarioTotal);e.currentTarget.blur();}}} onBlur={e=>{const input=e.currentTarget,n=input.valueAsNumber;if(!Number.isSafeInteger(n)||n<0){input.value=String(temporarioTotal);return;}if(n!==temporarioTotal)void editar(campo==='vida'?'vidaTemporaria':'determinacaoTemporaria',n,'definir');}}/><small>Restantes: {temporarioAtual}</small>{temporarioTotal>0&&<button disabled={salvando} onClick={()=>void editar(campo==='vida'?'vidaTemporaria':'determinacaoTemporaria',0,'definir')}>Remover temporários</button>}</label>}</div></details></section>;
+}

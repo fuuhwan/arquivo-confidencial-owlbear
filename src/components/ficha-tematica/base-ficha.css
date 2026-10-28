@@ -1,0 +1,2454 @@
+
+.pl-backup-acoes{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:15px}.pl-backup-acoes .pl-upload{padding:9px 12px}.pl-afinidade{margin:18px 0}.pl-foto-corpo{padding-top:12px;border-top:1px solid #ffffff44}.pl-foto-corpo img{max-height:70vh;object-fit:contain}.pl-root[data-afinidade]:not([data-afinidade="nenhuma"]){border:1px solid var(--afinidade-cor)}.pl-root[data-afinidade]:not([data-afinidade="nenhuma"]) .pl-painel{border-color:var(--afinidade-cor);background:#09090999}.pl-root[data-afinidade]:not([data-afinidade="nenhuma"]) .pl-identidade{border-color:var(--afinidade-cor);background:#090909aa}.pl-root[data-afinidade]:not([data-afinidade="nenhuma"]) .pl-registro-salvo{background:#121212bb;border:1px solid var(--afinidade-cor)}.pl-root[data-afinidade]:not([data-afinidade="nenhuma"]) .pl-abas button[aria-pressed=true]{box-shadow:inset 0 -3px var(--afinidade-cor)}
+
+.pl-pericia-overlay{background:#0007;align-items:center}.pl-pericia-janela{width:min(520px,100%);max-height:80dvh;background:#202020;color:white;border-radius:5px;box-shadow:0 12px 45px #0008;display:flex;flex-direction:column;overflow:hidden}.pl-pericia-janela>header{display:flex;align-items:center;gap:6px;padding:14px 16px}.pl-pericia-janela>header h2{flex:1;margin:0;font-size:19px}.pl-root .pl-pericia-janela>header button{background:none;border:0;padding:3px 6px;font-size:22px}.pl-pericia-conteudo{padding:0 16px 16px;overflow-y:auto;font-size:13px;line-height:1.65;scrollbar-width:thin}.pl-pericia-conteudo p{margin:0 0 12px;white-space:pre-wrap}.pl-pericia-conteudo p span{color:#a948ee}.pl-pericia-conteudo textarea{resize:vertical;line-height:1.6}
+
+.pl-pericia-acoes{white-space:nowrap}.pl-root .pl-pericia-acoes button{font-size:10px;padding:5px;margin-right:3px;background:#504636}.pl-pericia-acoes svg{vertical-align:middle}.pl-pericia-informacoes{padding:12px;background:#4b3c26;border:1px solid #b968ed55;border-radius:5px;margin:6px 0 10px;font-size:12px}.pl-pericia-informacoes>strong{color:#d5a4f4}.pl-pericia-informacoes p{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6;margin:8px 0}.pl-pericia-informacoes textarea{width:100%;resize:vertical;margin-top:6px}.pl-pericia-informacoes>button{font-size:11px;margin-top:8px}
+
+.pl-ritual-rolagens{display:flex;flex-wrap:wrap;gap:20px;margin:8px 0 10px;padding:0 0 8px 20px;border-bottom:1px solid #b968ed}.pl-ritual-rolagens>div>small{text-transform:uppercase;font-size:9px;color:#c9bfb2}.pl-ritual-rolagens button{background:none!important;border:0!important;padding:0!important;font-size:12px!important}.pl-ritual-rolagens>div>div{margin:3px 0!important}.pl-ritual-corpo{display:flow-root;font-size:12px;line-height:1.6}.pl-ritual-elemento{display:inline-block;background:#111;color:white;text-transform:uppercase;font-size:10px;font-weight:bold;padding:1px 7px;margin:2px 0 8px}.pl-ritual-simbolo{float:right;width:100px;max-width:35%;margin:0 0 8px 12px}.pl-ritual-simbolo img{max-height:120px!important;object-fit:contain}.pl-ritual-status p{margin:1px 0}.pl-ritual-status span,.pl-ritual-texto>span{color:#b968ed}.pl-ritual-texto{white-space:pre-wrap;margin:14px 0 0;text-align:justify;overflow-wrap:anywhere}.pl-ritual-editar{margin-top:12px;font-size:10px!important}
+
+.pl-item-resumo{position:relative;padding-right:35px}.pl-item-nome{display:inline-block;vertical-align:top}.pl-item-nome small{display:block;margin-top:4px;font-size:11px;font-weight:normal}.pl-item-nome small span{color:#b968ed}.pl-root .pl-item-equipado{position:absolute;right:0;top:2px;width:22px;height:22px;accent-color:#b968ed}
+
+.pl-ataque-topo{display:flex;align-items:center;gap:10px;list-style:none}.pl-ataque-topo::-webkit-details-marker{display:none}.pl-ataque-chevron{color:#b868f2;font-size:22px}.pl-ataque-foto{width:40px;height:40px;object-fit:contain;border-radius:4px}.pl-ataque-titulo{flex:1;min-width:0}.pl-ataque-titulo strong{display:block;font-size:12px}.pl-ataque-titulo small{display:block;margin-top:4px;font-size:11px;font-weight:normal}.pl-ataque-titulo small span,.pl-ataque-informacoes span{color:#b968ed}.pl-root .pl-ataque-dado{background:none;border:0;font-size:26px;padding:2px 5px}.pl-ataque-informacoes{border-top:1px solid #a95be8;margin-top:12px;padding-top:10px;font-size:12px;line-height:1.5}.pl-ataque-informacoes p{margin:3px 0}.pl-ataque-editar{margin-top:14px;font-size:11px}.pl-ataque-editar>summary{color:#86b666}.pl-resultado{white-space:pre-wrap}
+
+.pl-editor-ataque{display:grid;gap:12px;margin:14px 0;padding:12px;background:#ffffff0a;border-radius:5px}.pl-equipar{float:right;display:inline-flex;align-items:center;gap:6px;font-size:11px}.pl-root .pl-equipar input{width:20px;height:20px;accent-color:#b98ad8}.pl-combate>input{margin-bottom:8px}.pl-novo-ataque{width:100%;margin-bottom:14px}.pl-resultado{white-space:pre-wrap;max-height:70vh;overflow:auto}
+
+.pl-melhorias{margin-top:20px;padding-top:12px;border-top:1px solid #bda27066}.pl-melhorias>h3{text-align:left;font-size:13px}.pl-melhoria{margin:10px 0;padding:10px;background:#241e1766;border-radius:5px}.pl-melhoria summary{font-size:12px}.pl-melhoria-acoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.pl-melhoria-acoes button{font-size:11px}.pl-registro-salvo img,.pl-catalogo img{max-width:100%;object-fit:contain}
+
+.pl-preco-compra{display:block;font-size:11px;color:#dbc284;margin-top:5px}.pl-registro-salvo>button{margin-right:6px}
+
+.pl-inventario-resumo{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px;background:#4c4436;border:1px solid #ffffff33;border-radius:6px;margin-bottom:18px}.pl-inventario-resumo strong{font-size:13px}.pl-inventario-resumo small{font-size:10px}.pl-sobrecarga{color:#ffdd38!important;font-size:11px;line-height:1.5}.pl-inventario-aviso{grid-column:1/-1;font-size:11px;margin:0;line-height:1.5}.pl-penalidade{display:block;font-size:9px}.pl-deslocamento>.pl-sobrecarga{display:block;text-align:center;margin-top:5px}@media(max-width:380px){.pl-inventario-resumo{grid-template-columns:1fr}}
+
+.pl-abas{display:flex;flex-wrap:wrap;gap:3px;padding:5px;background:#504a40;border-radius:6px;margin-bottom:16px}.pl-root .pl-abas button{flex:1 0 auto;border:0;border-radius:0;background:none;padding:7px 5px;font-size:10px;font-weight:bold;text-transform:uppercase;color:#ccc}.pl-root .pl-abas button[aria-pressed=true]{color:white;box-shadow:inset 0 -3px #bd8ddc}.pl-registros-acoes{display:flex;gap:7px;margin-bottom:14px}.pl-registros-acoes input{flex:1;min-width:0}.pl-registros-acoes button{flex-shrink:0}.pl-dt{display:flex;align-items:center;gap:9px;margin-bottom:16px;font-size:11px;font-weight:bold;color:#ccc}.pl-dt strong{display:block;min-width:40px;border:1px solid #ffffff44;border-radius:5px;background:#514a3f;color:white;padding:7px;text-align:center;font-size:15px}.pl-vazio{text-align:center;padding:60px 10px;font-size:13px}.pl-registro-salvo{background:#4b3c26;padding:12px;border-radius:5px;margin-bottom:10px}.pl-registro-salvo summary{cursor:pointer;font-size:13px;font-weight:bold}.pl-registro-detalhes{font-size:11px;line-height:1.5;overflow-wrap:anywhere;margin:12px 0}.pl-registro-detalhes p{margin:4px 0}.pl-registro-descricao{font-size:12px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}.pl-registro-salvo>.pl-campo{max-width:160px;margin:12px 0}.pl-registro-salvo>button{margin-top:12px;font-size:11px}.pl-descricao-campos{display:grid;gap:20px}.pl-descricao-campos textarea{min-height:110px;resize:vertical;line-height:1.6}.pl-descricao-campos .pl-campo>span{font-size:12px;color:white}.pl-combate-vazio{min-height:340px}.pl-catalogo{color:#f5f0e6;background:#29231b;border:1px solid #b69d58;border-radius:10px;width:min(850px,calc(100vw - 24px));max-height:85dvh;padding:0;position:fixed;inset:0;margin:auto}.pl-catalogo::backdrop{background:#000b;backdrop-filter:blur(3px)}.pl-catalogo-interior{padding:20px}.pl-catalogo-interior>header{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}.pl-catalogo-interior>header h2{margin:0;text-transform:uppercase}.pl-catalogo-filtros{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}.pl-catalogo-contagem{display:flex;justify-content:space-between;align-items:center;margin:15px 0;font-size:12px}.pl-catalogo-registro{padding:12px;background:#403527;border:1px solid #ffffff20;border-radius:7px;margin-bottom:12px}.pl-catalogo-registro-topo{display:flex;align-items:center;justify-content:space-between;gap:12px}.pl-catalogo-registro-topo strong{font-size:14px;overflow-wrap:anywhere}.pl-catalogo-registro details{margin-top:10px;font-size:12px}.pl-catalogo-registro summary{cursor:pointer;color:#d4bf8c}@media(max-width:600px){.pl-catalogo-filtros{grid-template-columns:repeat(2,minmax(0,1fr))}.pl-catalogo-interior{padding:12px}.pl-abas{gap:1px}.pl-root .pl-abas button{font-size:9px}.pl-registros-acoes{flex-wrap:wrap}.pl-registros-acoes button{width:100%}}
+
+.pl-progressao{display:grid;grid-template-columns:minmax(45px,.8fr) minmax(52px,.9fr) minmax(52px,.9fr) minmax(125px,2fr);gap:7px;margin:18px 0 20px;align-items:start}.pl-progressao .pl-campo{gap:5px;text-align:center}.pl-progressao .pl-campo>span{order:2;font-size:9px}.pl-progressao input{text-align:center;height:30px;font-weight:bold;font-size:13px;padding:4px 2px;appearance:textfield;-moz-appearance:textfield}.pl-progressao input::-webkit-inner-spin-button,.pl-progressao input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.pl-nex{position:relative}.pl-nex>span{position:absolute;right:5px;top:8px;font-size:11px;pointer-events:none}.pl-nex input{padding-right:15px!important}.pl-deslocamento-valores{display:flex;align-items:center;gap:3px;border:1px solid #ffffff30;border-radius:4px;background:#514a3f;height:30px;padding:0 3px}.pl-deslocamento-valores input{width:42px;min-width:0;flex:1;border:0!important;background:transparent!important;height:27px}.pl-deslocamento-valores>span{font-size:11px;white-space:nowrap}.pl-deslocamento-label{display:block;margin-top:5px;text-align:center;font-size:9px;font-weight:bold;color:#d4cec2}@media(max-width:380px){.pl-progressao{grid-template-columns:repeat(3,minmax(0,1fr))}.pl-deslocamento{grid-column:1/-1}}
+
+.pl-root{color:#f5f0e6;background:linear-gradient(120deg,#28231c,#393126);padding:20px;border-radius:8px;font-family:Arial,sans-serif;min-width:0}.pl-root *{box-sizing:border-box}.pl-root button,.pl-upload{cursor:pointer}.pl-root button{border:1px solid #ffffff24;border-radius:5px;background:#a58a39;color:white;padding:8px 12px;font:inherit}.pl-root button:disabled{opacity:.5;cursor:wait}.pl-root input,.pl-root select,.pl-root textarea{font:inherit;min-width:0;max-width:100%;color:#fff;background:#514a3f;border:1px solid #ffffff30;border-radius:4px;padding:6px;width:100%}.pl-root input:focus,.pl-root select:focus,.pl-root textarea:focus,.pl-root button:focus-visible{outline:2px solid #e3be54;outline-offset:2px}.pl-root h2{font-size:16px;font-weight:bold;margin:0 0 14px}.pl-root h3{font-size:12px;font-weight:bold;text-align:center;margin:10px 0 6px}.pl-lista-topo,.pl-voltar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.pl-lista-topo button,.pl-preview-info button{background:#9249cc}.pl-busca{margin-bottom:20px;background:#1d1d1d!important}.pl-lista{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.pl-preview{position:relative;display:flex;background:#202020;min-height:112px;min-width:0;overflow:hidden;border-radius:4px}.pl-preview>img,.pl-semfoto{width:92px;flex-shrink:0;object-fit:cover;background:#353026;display:grid;place-items:center;font-size:34px}.pl-preview-info{display:flex;flex:1;min-width:0;flex-direction:column;padding:14px 10px 9px;gap:5px}.pl-preview-info strong{font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:16px}.pl-preview-info span{font-size:12px}.pl-preview-info small{font-size:10px;color:#d4c9aa}.pl-preview-info button{align-self:flex-end;font-size:11px;padding:5px 8px;margin-top:auto}.pl-root .pl-engrenagem{position:absolute;right:3px;top:1px;border:0;background:none;padding:3px}.pl-voltar span{font-size:11px}.pl-identidade{display:flex;gap:16px;padding:14px;background:#15120f99;border:1px solid #a096814d;border-radius:12px;margin-bottom:16px}.pl-retrato{width:90px;flex-shrink:0;text-align:center}.pl-retrato>button{padding:0;display:block;width:100%;background:none;border:0}.pl-retrato img{width:80px;height:80px;object-fit:cover;border-radius:8px}.pl-retrato>span{font-size:50px}.pl-upload{display:block;font-size:10px;padding:5px;background:#504636;border-radius:4px}.pl-upload input{display:none}.pl-identidade-campos{display:grid;grid-template-columns:1fr 1fr;gap:8px;flex:1;min-width:0}.pl-campo{display:flex;flex-direction:column;gap:4px;font-size:12px;min-width:0}.pl-origem-ajuda{font-size:10px;color:#dfc879;line-height:1.4}.pl-campo>span{color:#d4cec2;font-size:10px;font-weight:bold}.pl-ficha{display:grid;grid-template-columns:minmax(300px,1fr) minmax(340px,1fr);gap:16px;align-items:start}.pl-painel{border:1px solid #a0968155;border-radius:12px;background:#16130f88;padding:16px;min-width:0}.pl-pericias{grid-column:1;grid-row:1}.pl-centro{grid-column:2;grid-row:1}.pl-painel>h2{text-align:center}.pl-atributos{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.pl-atributo{text-align:center}.pl-atributo input{text-align:center;font-size:25px;border-radius:50%;aspect-ratio:1;max-height:68px;background:#27231c;border:2px solid #d5c89d}.pl-atributo button{font-size:10px;padding:5px 2px;width:100%;margin-top:6px;background:#504636}.pl-atributo .pl-campo>span{color:white}.pl-ajuda{font-size:10px;color:#bfb8a9;line-height:1.5;margin:8px 0 14px}.pl-barra{display:flex;align-items:center;position:relative;isolation:isolate;background:#111;border:1px solid #ffffff55;border-radius:5px;overflow:hidden}.pl-barra:before{content:'';position:absolute;inset:0 auto 0 0;width:var(--percentual);background:var(--recurso);z-index:-1}.pl-barra strong{flex:1;text-align:center;font-size:15px}.pl-root .pl-barra button{background:transparent;border:0;padding:4px 8px;font-size:23px;line-height:1}.pl-numeros{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:6px}.pl-numeros input{font-size:12px}.pl-defesas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:20px}.pl-defesas>div{background:#4d463b;border:1px solid #ffffff30;padding:8px;border-radius:6px}.pl-total{display:block;text-align:center;font-size:27px;margin-bottom:8px}.pl-defesas small{display:block;font-size:9px;margin-bottom:8px}.pl-defesas .pl-campo{margin-bottom:6px}.pl-textos{display:grid;gap:10px;margin-top:15px}.pl-textos textarea{min-height:48px;resize:vertical}.pl-tabela{overflow-x:auto}.pl-tabela table{width:100%;border-collapse:collapse;font-size:11px}.pl-tabela th{font-size:10px;color:#ccc;padding:6px 2px;text-align:left}.pl-tabela td{padding:3px 2px;border-bottom:1px solid #ffffff15}.pl-tabela input{width:48px;padding:4px}.pl-tabela select{padding:4px;width:57px;font-size:10px}.pl-root .pl-rolar{background:none;padding:3px 0;border:0;text-align:left;font-size:11px;white-space:nowrap}.pl-rolar:hover{color:#efd17c}.pl-rodape{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}.pl-root .pl-perigo{background:#9e2228}.pl-erro{padding:10px;background:#84232a;display:flex;justify-content:space-between;gap:8px;margin-bottom:12px}.pl-resultado{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:100;max-width:calc(100vw - 24px);width:500px;background:#211c15;border:1px solid #c6a748;border-radius:10px;padding:15px;display:flex;align-items:center;gap:12px;box-shadow:0 10px 30px #0009;font-size:14px;overflow-wrap:anywhere}.pl-resultado strong{flex:1}.pl-modal{position:fixed;inset:0;z-index:110;background:#000c;display:flex;align-items:center;justify-content:center;padding:20px}.pl-modal>img{max-width:90vw;max-height:85dvh;object-fit:contain}.pl-modal>button{position:absolute;top:16px;right:16px}.pl-confirmar{padding:24px;background:#29231b;border:1px solid #b69d58;border-radius:10px;max-width:400px;width:100%;display:grid;gap:12px}.pl-confirmar p{margin:0;font-size:13px}@media(max-width:1050px){.pl-lista{grid-template-columns:repeat(2,minmax(0,1fr))}.pl-ficha{grid-template-columns:1fr}.pl-centro{grid-column:1;grid-row:1}.pl-pericias{grid-column:1;grid-row:2}}@media(max-width:600px){.pl-root{padding:10px}.pl-lista{grid-template-columns:1fr;gap:14px}.pl-identidade{padding:10px;gap:10px}.pl-identidade-campos{grid-template-columns:1fr}.pl-painel{padding:10px}.pl-defesas{grid-template-columns:1fr}.pl-atributos{gap:4px}.pl-atributo input{font-size:21px}.pl-atributo button{font-size:9px}.pl-voltar{align-items:flex-start;flex-direction:column}.pl-tabela table{min-width:320px}.pl-rodape{flex-wrap:wrap}}
+
+.pl-atributos-pdf{display:block;position:relative;width:100%;max-width:420px;aspect-ratio:400/380;margin:0 auto 14px;isolation:isolate}.pl-atributos-conexoes{position:absolute;inset:0;width:100%;height:100%;stroke:#d5c89d;stroke-width:3;opacity:.55;z-index:-2;pointer-events:none}.pl-atributos-titulo{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);font-size:clamp(13px,2vw,21px);color:#f5f0e6;z-index:-1;padding:12px 5px;background:#27231c;letter-spacing:.5px}.pl-atributos-pdf .pl-atributo{position:absolute;width:29%;height:32%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8% 4% 4%;isolation:isolate}.pl-atributos-pdf .pl-atributo:before,.pl-atributos-pdf .pl-atributo:after{content:"";position:absolute;inset:0;clip-path:polygon(50% 0,97% 24%,97% 76%,50% 100%,3% 76%,3% 24%);z-index:-2;background:#d5c89d}.pl-atributos-pdf .pl-atributo:after{inset:3px;background:#27231c;z-index:-1}.pl-atributos-pdf .pl-atributo-agi{left:50%;top:0}.pl-atributos-pdf .pl-atributo-for{left:16%;top:26%}.pl-atributos-pdf .pl-atributo-int{left:84%;top:26%}.pl-atributos-pdf .pl-atributo-pre{left:29%;top:65%}.pl-atributos-pdf .pl-atributo-vig{left:71%;top:65%}.pl-atributo-nome{text-transform:uppercase;font-size:clamp(8px,1.3vw,12px);font-weight:bold;margin-bottom:2px}.pl-atributos-pdf .pl-atributo .pl-campo{width:100%;gap:0}.pl-atributos-pdf .pl-atributo .pl-campo>span{font-size:11px}.pl-root .pl-atributos-pdf .pl-atributo input{border:0;border-radius:0;background:transparent;aspect-ratio:auto;height:30px;max-height:30px;padding:0;font-size:25px;appearance:textfield}.pl-atributos-pdf input::-webkit-inner-spin-button,.pl-atributos-pdf input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.pl-root .pl-atributos-pdf .pl-atributo button{display:flex;align-items:center;justify-content:center;gap:3px;border:0;background:transparent;padding:2px 0;margin:1px 0 0;font-size:8px;white-space:nowrap}.pl-atributos-pdf .pl-atributo button svg{width:12px;height:12px}@media(max-width:380px){.pl-atributos-pdf .pl-atributo{padding-top:7%}.pl-atributos-pdf .pl-atributo-nome{font-size:8px}.pl-root .pl-atributos-pdf .pl-atributo input{height:25px;font-size:22px}}
+
+.pl-abas-mobile{display:none}
+@media(max-width:700px){
+.pl-root{padding:10px;font-size:14px;line-height:1.5}.pl-ficha{display:flex;flex-direction:column;gap:12px}.pl-painel{width:100%;padding:12px}.pl-abas-desktop{display:none}.pl-abas-mobile{position:sticky;top:70px;z-index:30;display:flex;flex-wrap:nowrap;width:100%;overflow-x:auto;gap:4px;padding:7px 4px;background:#29251f;box-shadow:0 3px 9px #0007;border:1px solid #8d7a5255;scrollbar-width:thin;margin:0}.pl-root .pl-abas-mobile button{flex:0 0 auto;padding:9px 8px;font-size:11px;white-space:nowrap}.pl-ficha[data-aba="atributos"] .pl-pericias{display:none}.pl-ficha:not([data-aba="atributos"]) .pl-centro{display:none}.pl-identidade{align-items:flex-start;gap:12px}.pl-identidade-campos{grid-template-columns:minmax(0,1fr)}.pl-identidade .pl-campo>span{font-size:12px}.pl-identidade input,.pl-identidade select{font-size:14px}.pl-retrato{width:70px}.pl-retrato img{width:64px;height:64px}.pl-retrato .pl-upload{font-size:11px}.pl-origem-ajuda{font-size:11px;line-height:1.5}.pl-ajuda{font-size:12px;line-height:1.6}.pl-progressao{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.pl-progressao .pl-deslocamento{grid-column:1/-1}.pl-progressao .pl-campo>span,.pl-deslocamento-label{font-size:11px}.pl-deslocamento-valores{max-width:220px;margin:0 auto}.pl-deslocamento-valores input{font-size:15px}.pl-defesas{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.pl-defesas>div:first-child{grid-column:1/-1}.pl-defesas small{font-size:11px}.pl-textos .pl-campo>span{font-size:12px}.pl-textos textarea{font-size:14px;line-height:1.6;min-height:65px}.pl-tabela table{min-width:410px;font-size:12px}.pl-tabela th{font-size:11px}.pl-tabela input,.pl-tabela select{font-size:12px;padding:6px}.pl-root .pl-rolar{font-size:12px}.pl-ritual-corpo,.pl-registro-descricao{font-size:13px;line-height:1.7}.pl-registro-detalhes{font-size:12px}.pl-registro-salvo summary{font-size:14px}.pl-root .pl-ritual-rolagens button{font-size:13px!important}.pl-campo>span{font-size:11px}.pl-rodape{justify-content:stretch}.pl-rodape button{flex:1}.pl-voltar{gap:7px}
+}
+
+.pl-atributos-pdf .pl-atributo{padding:0!important}.pl-root .pl-atributos-pdf .pl-atributo .pl-atributo-rolagem{display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;height:100%;padding:0;margin:0;clip-path:polygon(50% 0,97% 24%,97% 76%,50% 100%,3% 76%,3% 24%);font-size:12px;background:transparent;color:inherit;cursor:pointer}.pl-atributo-rolagem>span{font-size:12px;font-weight:bold}.pl-atributo-rolagem>strong{font-size:30px;line-height:1.25}.pl-root .pl-atributos-pdf .pl-atributo-rolagem:hover{background:#d5c89d22}.pl-root .pl-atributos-pdf .pl-atributos-lapis{position:absolute;right:0;top:0;z-index:3;width:34px;height:34px;background:transparent;border:1px solid #d5c89d66;padding:6px;display:grid;place-items:center}.pl-atributos-pdf .pl-atributo .pl-campo{width:70%}
+
+.pl-atributos-pdf {
+  aspect-ratio: 400 / 310;
+}
+
+.pl-atributos-pdf .pl-atributo-fisico {
+  left: 18%;
+  top: 20%;
+}
+
+.pl-atributos-pdf .pl-atributo-mente {
+  left: 82%;
+  top: 20%;
+}
+
+.pl-atributos-pdf .pl-atributo-presenca {
+  left: 50%;
+  top: 65%;
+}
+
+.pl-atributos-titulo {
+  top: 48%;
+}
+
+.pl-atributo-rolagem > span {
+  font-size: 11px;
+}
+
+.pl-calculo-classe {
+  margin: 18px 0;
+  padding: 14px;
+  border: 1px solid #ffffff33;
+  border-radius: 8px;
+  background: #ffffff08;
+}
+
+.pl-calculo-recurso {
+  margin-top: 14px;
+}
+
+.pl-calculo-recurso h3 {
+  text-align: left;
+}
+
+.pl-calculo-grade {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 500px) {
+  .pl-calculo-grade {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pl-preview {
+  align-items: flex-start;
+}
+
+.pl-preview > img,
+.pl-preview > .pl-semfoto {
+  width: 92px;
+  height: 124px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  object-fit: contain;
+}
+
+.pl-preview-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.pl-preview {
+  position: relative;
+  align-items: stretch;
+}
+
+.pl-preview > img,
+.pl-preview > .pl-semfoto {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 92px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.pl-preview-info {
+  margin-left: 92px;
+  flex: 1;
+  min-width: 0;
+}
+
+.pl-preview > img {
+  object-fit: contain;
+  object-position: center bottom;
+  background: transparent;
+}
+
+.pl-preview > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: auto;
+
+  width: 92px;
+  height: 124px;
+
+  object-fit: contain;
+  object-position: center top;
+  background: transparent;
+  align-self: flex-start;
+}
+
+.pl-identidade {
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.pl-identidade-campos {
+  flex: 1;
+  min-width: 0;
+}
+
+.pl-identidade-recursos {
+  display: grid;
+  gap: 8px;
+  width: 240px;
+  max-width: 100%;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.pl-identidade-barra {
+  position: relative;
+  height: 28px;
+  background: #151515;
+  border: 1px solid #ffffff50;
+  overflow: hidden;
+}
+
+.pl-identidade-preenchimento {
+  height: 100%;
+  transition: width 0.2s;
+}
+
+.pl-identidade-barra strong {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 13px;
+  text-shadow: 1px 1px 2px #000;
+}
+
+@media (max-width: 900px) {
+  .pl-identidade-recursos {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .pl-root .pl-atributos-pdf .pl-atributo .pl-atributo-rolagem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .pl-root .pl-atributo-rolagem > span {
+    display: block;
+    position: static;
+    font-size: 9px;
+    line-height: 1.1;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pl-root .pl-atributo-rolagem > strong {
+    display: block;
+    font-size: 25px;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.pl-root .pl-pericia-colorida .pl-rolar,
+.pl-root .pl-pericia-colorida .pl-rolar:hover,
+.pl-root .pl-pericia-colorida td > span,
+.pl-root .pl-pericia-colorida select,
+.pl-root .pl-pericia-colorida input {
+  color: inherit;
+}
+
+.pl-notificacao-dados {
+  position: fixed;
+  right: 4px;
+  bottom: 20px;
+  z-index: 120;
+  width: 260px;
+  max-width: calc(100vw - 24px);
+  max-height: 70dvh;
+  overflow-y: auto;
+  padding: 12px;
+  background: #202020;
+  color: white;
+  border: 1px solid #ffffff80;
+  border-radius: 3px;
+  box-shadow: 0 8px 25px #0008;
+}
+
+.pl-notificacao-dados > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pl-notificacao-dados > header > strong {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.pl-root .pl-notificacao-dados > header > button {
+  background: transparent;
+  border: 0;
+  padding: 0 4px;
+  font-size: 20px;
+}
+
+.pl-notificacao-dados > small {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+}
+
+.pl-notificacao-resultados {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.pl-notificacao-valor {
+  flex: 1;
+  min-width: 75px;
+  border-left: 1px solid #ffffff40;
+  padding-left: 12px;
+}
+
+.pl-notificacao-valor > summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.pl-notificacao-valor > summary::-webkit-details-marker {
+  display: none;
+}
+
+.pl-notificacao-valor summary > strong {
+  font-size: 23px;
+  line-height: 1;
+}
+
+.pl-notificacao-valor summary > span {
+  font-size: 9px;
+}
+
+.pl-notificacao-valor em {
+  color: #ffe600;
+  font-size: 9px;
+  font-style: normal;
+}
+
+.pl-notificacao-valor pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: 11px/1.5 Arial, sans-serif;
+  margin-top: 10px;
+}
+
+@media (max-width: 700px) {
+  .pl-notificacao-dados {
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+.pl-notificacao-dados {
+  bottom: 90px;
+}
+
+@media (max-width: 700px) {
+  .pl-notificacao-dados {
+    bottom: 85px;
+  }
+}
+
+.pl-notificacao-tipo-dano {
+  display: block;
+  color: #d5a4f4;
+  font-size: 10px;
+  text-align: center;
+}
+
+.pl-aptidao-descricao {
+  margin: 3px 0 4px;
+  padding: 10px 14px;
+  background: #ffffff0c;
+  border: 1px solid #ffffff20;
+  border-radius: 6px;
+  box-shadow:
+    inset 0 1px 0 #ffffff12,
+    0 3px 7px #0005;
+  color: #f5f0e6;
+  font-size: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.pl-root .pl-etiqueta-elemento {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 7px;
+  padding: 3px 7px;
+  border: 1px solid #ffffff25;
+  border-radius: 2px;
+  font-size: 9px;
+  font-weight: bold;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.pl-root .pl-tabela th:nth-child(3),
+.pl-root .pl-tabela td:nth-child(3) {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.pl-root .pl-tabela td:nth-child(3) > .pl-campo {
+  width: 64px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.pl-root .pl-tabela td:nth-child(3) > .pl-campo > span {
+  display: none;
+}
+
+.pl-root .pl-tabela td:nth-child(3) input {
+  width: 64px;
+  text-align: center;
+}
+
+.pl-root .pl-habilidade-cartao {
+  margin-top: 14px;
+  padding: 20px;
+  color: #20232a;
+  background: linear-gradient(110deg, #eee6d4, #f4efdf);
+  border: 1px solid #a39780;
+  box-shadow: 3px 4px 0 #0003;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.pl-root .pl-habilidade-cartao > h2 {
+  margin: 0 0 14px;
+  color: #171717;
+  font-size: 22px;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.pl-habilidade-etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+
+.pl-habilidade-etiquetas > span {
+  padding: 5px 8px;
+  background: #e4e6ec;
+  border: 1px dashed #8792a5;
+  color: #202735;
+  font: 10px/1.4 monospace;
+  text-transform: uppercase;
+}
+
+.pl-root .pl-habilidade-etiquetas .pl-etiqueta-elemento {
+  margin-left: 0;
+}
+
+.pl-root .pl-habilidade-texto,
+.pl-root .pl-habilidade-afinidade p {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.pl-habilidade-requisitos {
+  display: flex;
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+.pl-habilidade-requisitos > strong {
+  padding: 6px 10px;
+  background: #171e2e;
+  color: #fff;
+}
+
+.pl-habilidade-requisitos > span {
+  flex: 1;
+  padding: 6px 10px;
+  background: #e4e6ec;
+  border: 1px dashed #8792a5;
+  overflow-wrap: anywhere;
+}
+
+.pl-habilidade-afinidade {
+  margin-top: 16px;
+  padding: 10px;
+  border-left: 3px solid #9d00ff;
+  background: #00000006;
+}
+
+.pl-habilidade-afinidade > strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.pl-habilidade-cartao > footer {
+  margin-top: 24px;
+  padding-top: 12px;
+  border-top: 1px dashed #8792a5;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.pl-root .pl-habilidade-cartao {
+  background: transparent;
+  color: #f5f0e6;
+  border: 0;
+  box-shadow: none;
+}
+
+.pl-root .pl-habilidade-cartao > h2 {
+  color: #f5f0e6;
+}
+
+.pl-root .pl-habilidade-cartao {
+  background: transparent;
+  color: #f5f0e6;
+  border: 0;
+  box-shadow: none;
+}
+
+.pl-root .pl-habilidade-cartao > h2 {
+  color: #f5f0e6;
+}
+
+.pl-equipamento-cartao {
+  margin-top: 16px;
+  color: #f5f0e6;
+}
+
+.pl-equipamento-classificacao,
+.pl-equipamento-etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.pl-equipamento-status {
+  display: flex;
+  min-width: 0;
+  font-size: 12px;
+}
+
+.pl-equipamento-status > strong {
+  display: flex;
+  align-items: center;
+  padding: 5px 9px;
+  background: #171e2e;
+  color: white;
+}
+
+.pl-equipamento-status > span {
+  flex: 1;
+  padding: 5px 9px;
+  background: #ffffff0d;
+  border: 1px dashed #ffffff40;
+  overflow-wrap: anywhere;
+}
+
+.pl-equipamento-etiquetas > span {
+  padding: 4px 8px;
+  border: 1px dashed #ffffff60;
+  background: #ffffff0d;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.pl-root .pl-equipamento-etiquetas .pl-etiqueta-elemento {
+  margin-left: 0;
+}
+
+.pl-equipamento-grade {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.pl-equipamento-descricao {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.pl-equipamento-cartao > footer {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px dashed #ffffff40;
+  font-size: 11px;
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .pl-equipamento-grade {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pl-equipamento-medidas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.pl-equipamento-medidas > .pl-campo {
+  max-width: none;
+  margin: 0;
+}
+
+.pl-melhoria summary > small {
+  font-size: 10px;
+  font-weight: normal;
+}
+
+.pl-editar-item-topo {
+  display: flex;
+  justify-content: flex-end;
+  margin: 8px 0 14px;
+}
+
+.pl-editor-ataque-overlay {
+  z-index: 150;
+}
+
+.pl-editor-ataque-janela {
+  width: min(800px, 100%);
+  max-height: 85dvh;
+  overflow-y: auto;
+  padding: 20px;
+  background: #29231b;
+  color: #f5f0e6;
+  border: 1px solid #b69d58;
+  border-radius: 8px;
+}
+
+.pl-editor-ataque-janela > header,
+.pl-editor-ataque-janela > footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pl-editor-ataque-janela > header {
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.pl-editor-ataque-janela > header h2 {
+  margin: 0;
+}
+
+.pl-editor-ataque-janela > footer {
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.pl-root .pl-habilidade-requisitos > strong {
+  background: #171e2e;
+  color: #fff;
+}
+
+.pl-root .pl-habilidade-requisitos > span {
+  background: #ffffff0d;
+  color: #f5f0e6;
+  border-color: #ffffff40;
+}
+
+
+
+      .pl-ataque-dado:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+        .frc-ficha {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .frc-ficha .frc-identidade {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          margin-bottom: 16px;
+        }
+
+        .frc-identidade img {
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+          border-radius: 8px;
+        }
+
+        .frc-recurso {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 38px;
+  margin: 8px 0;
+  border-radius: 5px;
+  background: #161616;
+  box-shadow: inset 0 0 0 1px #ffffff25;
+  color: white;
+}
+
+.frc-recurso-preenchimento {
+  position: absolute;
+  inset: 0 auto 0 0;
+  transition: width 250ms ease;
+  pointer-events: none;
+}
+
+.frc-recurso-texto {
+  position: relative;
+  display: block;
+  padding: 9px;
+  text-align: center;
+  text-shadow: 0 1px 3px #000;
+}
+
+        .frc-abas, .frc-botoes {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 7px;
+          margin: 12px 0;
+        }
+
+        .frc-ficha .frc-abas button[aria-pressed="true"] {
+          background: #9249cc;
+        }
+
+        .frc-ficha .frc-defesas {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+          margin-top: 16px;
+        }
+
+        .frc-defesas > div {
+          padding: 12px;
+          text-align: center;
+          border: 1px solid #ffffff22;
+          border-radius: 6px;
+          background: #16130f88;
+        }
+
+        .frc-defesas strong {
+          display: block;
+          font-size: 24px;
+        }
+
+        .frc-ficha details {
+          margin: 10px 0;
+          padding: 13px;
+          border: 1px solid #ffffff28;
+          border-radius: 7px;
+          background: #16130f88;
+        }
+
+        .frc-ficha summary {
+          cursor: pointer;
+          font-weight: bold;
+        }
+
+        .frc-ficha p {
+          margin: 8px 0;
+          white-space: pre-wrap;
+          overflow-wrap: anywhere;
+        }
+
+        .frc-ficha .pl-tabela td {
+          padding: 10px 5px;
+        }
+
+        .frc-especialidade {
+          margin-top: 7px;
+          padding: 7px 10px;
+          border-left: 3px solid #b86bff;
+          border-radius: 4px;
+          background: #ffffff0b;
+          white-space: pre-wrap;
+        }
+
+        .frc-resultado {
+          position: sticky;
+          bottom: 12px;
+          margin-top: 16px;
+          padding: 14px;
+          background: #211c15;
+          border: 1px solid #c6a748;
+          border-radius: 8px;
+          box-shadow: 0 8px 25px #0008;
+          z-index: 5;
+        }
+
+        .frc-resultado pre {
+          margin-top: 10px;
+          white-space: pre-wrap;
+          overflow-wrap: anywhere;
+          font: inherit;
+        }
+          .frc-ficha .pl-registro-salvo {
+  background-color: #4b3c26;
+}
+
+.frc-ficha .pl-tabela td {
+  padding: 3px 2px;
+}
+
+.frc-ficha .pl-tabela select:disabled {
+  opacity: 1;
+  color: inherit;
+  -webkit-text-fill-color: currentColor;
+  cursor: default;
+}
+
+.frc-ficha .pl-tabela input[readonly] {
+  color: inherit;
+}
+
+.frc-ficha .frc-penalidade {
+  display: block;
+  color: #ffd000;
+  font-size: 9px;
+}
+
+.frc-ficha .pl-ritual-status p {
+  margin: 1px 0;
+}
+
+.frc-ficha .pl-ataque-informacoes p {
+  margin: 3px 0;
+}
+
+.frc-ficha .pl-ritual-texto {
+  margin: 14px 0 0;
+}
+
+.frc-ficha[data-afinidade]:not([data-afinidade="nenhuma"])
+.frc-abas button[aria-pressed="true"] {
+  background: #161116;
+  border-color: var(--afinidade-cor);
+  box-shadow: inset 0 -3px var(--afinidade-cor);
+}
+
+.frc-ficha[data-afinidade]:not([data-afinidade="nenhuma"])
+.frc-defesas > div {
+  background: #09090999;
+  border-color: var(--afinidade-cor);
+}
+
+.frc-recurso-controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 6px 0 14px;
+}
+
+.frc-ficha .frc-recurso-controles input {
+  width: 90px;
+  text-align: center;
+}
+
+.frc-ficha .frc-recurso-controles button {
+  min-width: 40px;
+  font-size: 20px;
+  padding: 3px 10px;
+}
+  .frc-recurso > .circulos-vida {
+  position: relative;
+  margin: 0;
+  padding: 9px;
+}
+
+      
+/* Este arquivo altera somente a decoração dos atributos. */
+
+/* Decorações ocultas por padrão. */
+.conhecimento-anel,
+.conhecimento-glifo-interno {
+  display: none;
+}
+
+/* Símbolo central dos elementos. */
+.pl-root .pl-atributos-pdf .afinidade-simbolo-central {
+  position: absolute;
+  left: 50%;
+  top: 49%;
+  transform: translate(-50%, -50%);
+
+  width: 87%;
+  height: 93%;
+  color: var(--afinidade-cor, #b69d58);
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Organização dos atributos de Conhecimento. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo-fisico {
+  left: 25%;
+  top: 14%;
+}
+
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo-mente {
+  left: 75%;
+  top: 14%;
+}
+
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo-presenca {
+  left: 50%;
+  top: 67%;
+}
+
+/* Atributos e sigilos acima do símbolo central. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo {
+  z-index: 2;
+  overflow: visible;
+}
+
+/* Retira os contornos antigos dos atributos. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo::before,
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo::after {
+  display: none !important;
+}
+
+/* Retira as conexões antigas. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-conexoes {
+  display: none;
+}
+
+/* Anéis com sigilos. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .conhecimento-anel {
+  display: block;
+  position: absolute;
+  inset: -23%;
+
+  width: 146%;
+  height: 146%;
+  overflow: visible;
+
+  color: #d4b44b;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pl-root[data-afinidade="conhecimento"]
+.conhecimento-anel circle {
+  stroke-width: 1;
+}
+
+.pl-root[data-afinidade="conhecimento"]
+.conhecimento-anel path {
+  stroke-width: 1.2;
+}
+
+.pl-root[data-afinidade="conhecimento"]
+.conhecimento-anel .conhecimento-sigilo {
+  stroke: #d4b44b;
+  stroke-width: 2;
+}
+
+/* Nomes e valores legíveis sobre o fundo original. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo .pl-atributo-rolagem {
+  position: relative;
+  z-index: 2;
+  color: #f5f0e6;
+  text-shadow: 0 1px 3px #000;
+}
+
+/* Mantém a edição acima dos desenhos. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo .pl-campo {
+  position: relative;
+  z-index: 2;
+}
+
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributos-lapis {
+  z-index: 5;
+}
+
+/* Símbolo luminoso, sem um disco cobrindo os sigilos. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .afinidade-simbolo-central {
+  width: 31%;
+  height: 37%;
+  color: #fff9b0;
+
+  filter:
+    drop-shadow(0 0 2px #ffffdc)
+    drop-shadow(0 0 5px #ffed00)
+    drop-shadow(0 0 10px #e5c300);
+}
+
+/* Revela o fundo temático da ficha atrás dos atributos. */
+.pl-root[data-afinidade]:not([data-afinidade="nenhuma"])
+.pl-painel.pl-centro,
+.pl-root.frc-ficha[data-afinidade]:not([data-afinidade="nenhuma"])
+> .pl-painel {
+  background: transparent;
+}
+
+/* Imagem exclusiva de Sangue. */
+.sangue-simbolo-fundo {
+  display: none;
+}
+
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 482 / 567;
+  margin: 32px auto 28px;
+}
+
+/* Oculta o símbolo SVG anterior e as conexões. */
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .afinidade-simbolo-central,
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-conexoes {
+  display: none;
+}
+
+/* Usa o PNG enviado como desenho principal. */
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .sangue-simbolo-fundo {
+  display: block;
+  position: absolute;
+  inset: 0;
+
+  background: #b72025;
+
+  /* Compensa as margens transparentes do PNG enviado. */
+  mask-size: 118.5% 142.3%;
+  mask-position: 50.6% 47.1%;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-size: 118.5% 142.3%;
+  -webkit-mask-position: 50.6% 47.1%;
+  -webkit-mask-repeat: no-repeat;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Campos acima do desenho. */
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .pl-atributo {
+  width: 24%;
+  height: auto;
+  aspect-ratio: 1;
+
+  padding: 0 !important;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+/* Ponta superior. */
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .pl-atributo-fisico {
+  left: 50%;
+  top: 10%;
+}
+
+/* Ponta inferior esquerda. */
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .pl-atributo-mente {
+  left: 17%;
+  top: 81%;
+}
+
+/* Ponta inferior direita. */
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .pl-atributo-presenca {
+  left: 83%;
+  top: 81%;
+}
+
+/* Retira os antigos hexágonos/círculos. */
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .pl-atributo::before,
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .pl-atributo::after {
+  display: none !important;
+}
+
+/* Campo circular legível sobre as pontas do símbolo. */
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .pl-atributo .pl-atributo-rolagem {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  clip-path: none;
+  border: 2px solid #b72025;
+  border-radius: 50%;
+  background: #171010ed;
+  color: #fff;
+  padding: 4px;
+  text-shadow: 0 1px 3px #000;
+}
+
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .pl-atributo-rolagem:hover {
+  background: #401319;
+}
+
+/* Preserva a edição dos atributos na ficha normal. */
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .pl-atributo .pl-campo {
+  position: relative;
+  z-index: 3;
+  width: 90%;
+  padding: 4px;
+  border-radius: 6px;
+  background: #171010ed;
+  color: white;
+}
+
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .pl-atributos-lapis {
+  z-index: 5;
+}
+
+/* Ponta superior da cruz. */
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .pl-atributo-fisico {
+  left: 50%;
+  top: 29%;
+}
+
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .pl-atributo-mente {
+  left: 18%;
+  top: 65%;
+}
+
+.pl-root[data-afinidade="sangue"]
+.pl-atributos-pdf .pl-atributo-presenca {
+  left: 82%;
+  top: 65%;
+}
+/* Ficha normal com o mesmo acabamento da resumida. */
+.pl-root.pl-ficha-normal[data-afinidade]:not([data-afinidade="nenhuma"])
+.pl-painel {
+  background: transparent;
+  border: 1px solid var(--afinidade-cor);
+  border-radius: 10px;
+}
+
+/* Abas sem a faixa de fundo antiga. */
+.pl-root.pl-ficha-normal[data-afinidade]:not([data-afinidade="nenhuma"])
+.pl-abas {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  gap: 10px;
+}
+
+/* Botões das abas. */
+.pl-root.pl-ficha-normal[data-afinidade]:not([data-afinidade="nenhuma"])
+.pl-abas button {
+  background: #a88c38;
+  color: white;
+  border: 1px solid #b69d58;
+  border-radius: 5px;
+  padding: 10px 14px;
+  text-transform: none;
+  font-size: 14px;
+}
+
+/* Aba selecionada com a cor do elemento. */
+.pl-root.pl-ficha-normal[data-afinidade]:not([data-afinidade="nenhuma"])
+.pl-abas button[aria-pressed="true"] {
+  background: #161116;
+  border-color: var(--afinidade-cor);
+  box-shadow: inset 0 -3px var(--afinidade-cor);
+}
+
+/* Defesas com o fundo escuro da resumida. */
+.pl-root.pl-ficha-normal[data-afinidade]:not([data-afinidade="nenhuma"])
+.pl-defesas > div {
+  background: #09090999;
+  border: 1px solid var(--afinidade-cor);
+  border-radius: 5px;
+}
+
+/* Evita recortar o conteúdo dos círculos de Conhecimento. */
+.pl-root.pl-ficha-normal[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo .pl-atributo-rolagem {
+  clip-path: none;
+}
+
+/* Preserva o lápis acima das decorações. */
+.pl-root.pl-ficha-normal
+.pl-atributos-pdf .pl-atributos-lapis {
+  z-index: 5;
+}
+
+/* Defesas compactas, como na ficha resumida. */
+.pl-root.pl-ficha-normal .pl-defesas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.pl-root.pl-ficha-normal .pl-defesas > div {
+  grid-column: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 12px 8px;
+  min-width: 0;
+  text-align: center;
+  background: #09090999;
+  border: 1px solid var(--afinidade-cor, #b69d58);
+  border-radius: 5px;
+}
+
+.pl-root.pl-ficha-normal .pl-defesas > div > .pl-total {
+  order: -1;
+  display: block;
+  margin: 0 0 4px;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.pl-root.pl-ficha-normal .pl-defesas > div > h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: none;
+}
+
+.pl-root.pl-ficha-normal .pl-defesa-edicao {
+  margin-top: 8px;
+  text-align: left;
+}
+
+.pl-root.pl-ficha-normal .pl-defesa-edicao > summary {
+  color: #ddd;
+  font-size: 11px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.pl-root.pl-ficha-normal .pl-defesa-edicao[open] > summary {
+  margin-bottom: 10px;
+}
+
+/* Remove o fundo marrom externo das habilidades. */
+.pl-root.pl-ficha-normal
+.pl-registro-salvo.pl-registro-habilidade {
+  background: transparent;
+  border: 1px solid var(--afinidade-cor, #b69d58);
+  border-radius: 5px;
+}
+
+/* Texto das habilidades com o acabamento dos rituais. */
+.pl-root.pl-ficha-normal
+.pl-registro-habilidade .pl-habilidade-cartao {
+  margin: 12px 0;
+  padding: 0;
+  background: transparent;
+  color: #f5f0e6;
+  border: 0;
+  box-shadow: none;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.pl-root.pl-ficha-normal
+.pl-registro-habilidade .pl-habilidade-cartao > h2 {
+  color: inherit;
+  font-family: inherit;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.pl-root.pl-ficha-normal
+.pl-registro-habilidade .pl-habilidade-texto,
+.pl-root.pl-ficha-normal
+.pl-registro-habilidade .pl-habilidade-afinidade p {
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Defesa, Bloqueio e Esquiva na mesma linha. */
+.pl-root.pl-ficha-normal .pl-defesas {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pl-root.pl-ficha-normal .pl-defesas > div {
+  grid-column: auto;
+}
+
+/* Campos da ficha normal com o acabamento dos cartões de defesa. */
+.pl-root.pl-ficha-normal .pl-painel input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.pl-root.pl-ficha-normal .pl-painel select,
+.pl-root.pl-ficha-normal .pl-painel textarea,
+.pl-root.pl-ficha-normal .pl-deslocamento-valores {
+  background: #09090999;
+  color: #f5f0e6;
+  border: 1px solid var(--afinidade-cor, #b69d58);
+  border-radius: 5px;
+}
+
+/* Evita um segundo fundo dentro do campo de deslocamento. */
+.pl-root.pl-ficha-normal .pl-deslocamento-valores input {
+  background: transparent;
+  border: 0;
+}
+
+/* Opções da seleção com fundo legível. */
+.pl-root.pl-ficha-normal .pl-painel select option {
+  background: #171512;
+  color: #f5f0e6;
+}
+
+/* Destaque ao editar um campo. */
+.pl-root.pl-ficha-normal .pl-painel input:focus-visible,
+.pl-root.pl-ficha-normal .pl-painel select:focus-visible,
+.pl-root.pl-ficha-normal .pl-painel textarea:focus-visible {
+  outline: 2px solid var(--afinidade-cor, #b69d58);
+  outline-offset: 2px;
+}
+
+/* Cartões de habilidades da ficha normal. */
+.pl-root.pl-ficha-normal
+.pl-registro-salvo.pl-registro-habilidade {
+  background: #09090999;
+  color: #f5f0e6;
+  border: 1px solid var(--afinidade-cor, #b69d58);
+  border-radius: 5px;
+}
+
+/* Conteúdo interno acompanha o fundo do cartão. */
+.pl-root.pl-ficha-normal
+.pl-registro-habilidade .pl-habilidade-cartao {
+  background: transparent;
+  color: inherit;
+  border: 0;
+  box-shadow: none;
+}
+
+/* Etiquetas das habilidades. */
+.pl-root.pl-ficha-normal
+.pl-registro-habilidade .pl-habilidade-etiquetas > span {
+  background: #09090999;
+  color: #f5f0e6;
+  border: 1px solid var(--afinidade-cor, #b69d58);
+  border-radius: 4px;
+}
+
+/* Campos da ficha resumida de combate. */
+.pl-root.frc-ficha input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.pl-root.frc-ficha select,
+.pl-root.frc-ficha textarea {
+  background: #09090999;
+  border: 1px solid var(--afinidade-cor, #b69d58);
+  border-radius: 5px;
+}
+
+/* Opções dos seletores. */
+.pl-root.frc-ficha select option {
+  background: #171512;
+  color: #f5f0e6;
+}
+
+/* Cartões de ataques e rituais da resumida. */
+.pl-root.frc-ficha .pl-registro-salvo {
+  background: #09090999;
+  border: 1px solid var(--afinidade-cor, #b69d58);
+  border-radius: 5px;
+}
+
+/* Nome, jogador, origem, classe e perícias do cabeçalho. */
+.pl-root.pl-ficha-normal .pl-identidade input,
+.pl-root.pl-ficha-normal .pl-identidade select,
+.pl-root.pl-ficha-normal .pl-identidade textarea,
+.pl-root.pl-ficha-normal .pl-identidade .pl-upload {
+  background: #09090999;
+  color: #f5f0e6;
+  border: 1px solid var(--afinidade-cor, #b69d58);
+  border-radius: 5px;
+}
+
+.pl-root.pl-ficha-normal .pl-identidade select option {
+  background: #171512;
+  color: #f5f0e6;
+}
+
+.pl-root.pl-ficha-normal .pl-identidade input:focus-visible,
+.pl-root.pl-ficha-normal .pl-identidade select:focus-visible,
+.pl-root.pl-ficha-normal .pl-identidade textarea:focus-visible {
+  outline: 2px solid var(--afinidade-cor, #b69d58);
+  outline-offset: 2px;
+}
+
+/* Decoração exclusiva de Morte. */
+.morte-simbolo-central,
+.morte-anel {
+  display: none;
+}
+
+/* Organização comum às duas fichas. */
+.pl-root[data-afinidade="morte"] .pl-atributos-pdf {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1;
+  margin: 20px auto 28px;
+}
+
+/* Remove as conexões e o símbolo antigo. */
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributos-conexoes,
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .afinidade-simbolo-central {
+  display: none;
+}
+
+/* Símbolo original enviado. */
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .morte-simbolo-central {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 49%;
+  width: 29%;
+  height: 37%;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+
+  /* Faz o preto da imagem se misturar ao fundo. */
+  mix-blend-mode: screen;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Campos dos atributos. */
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributo {
+  position: absolute;
+  width: 25%;
+  height: auto;
+  aspect-ratio: 1;
+  padding: 0 !important;
+  transform: translate(-50%, -50%);
+  overflow: visible;
+  z-index: 2;
+}
+
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributo-fisico {
+  left: 12%;
+  top: 23%;
+}
+
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributo-mente {
+  left: 88%;
+  top: 23%;
+}
+
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributo-presenca {
+  left: 50%;
+  top: 89%;
+}
+
+/* Retira os hexágonos antigos. */
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributo::before,
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributo::after {
+  display: none !important;
+}
+
+/* Espirais ao redor de cada atributo. */
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .morte-anel {
+  display: block;
+  position: absolute;
+  inset: -25%;
+  width: 150%;
+  height: 150%;
+  color: #c6c6bf;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Nome e valor dentro do anel. */
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributo .pl-atributo-rolagem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  clip-path: none;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  text-shadow: 0 2px 4px #000;
+  z-index: 2;
+}
+
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributo .pl-atributo-rolagem:hover {
+  background: #ffffff12;
+}
+
+/* Edição acima da decoração. */
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributo .pl-campo {
+  position: relative;
+  width: 80%;
+  z-index: 3;
+}
+
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributos-lapis {
+  z-index: 5;
+}
+
+/* Espiral inteira ao redor de cada atributo. */
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .morte-anel {
+  inset: -25%;
+  width: 150%;
+  height: 150%;
+  color: #c6c6bf;
+}
+
+/* Número no centro da espiral. */
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributo .pl-atributo-rolagem {
+  overflow: visible;
+  background: transparent;
+}
+
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributo-rolagem > strong {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  line-height: 1;
+  text-shadow:
+    0 0 4px #000,
+    0 0 8px #000;
+}
+
+/* Nome acima do número, com fundo para leitura. */
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributo-rolagem > span {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  transform: translateX(-50%);
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #090909cc;
+  white-space: nowrap;
+}
+
+/* Símbolo central maior nas duas fichas. */
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .morte-simbolo-central {
+  left: 50%;
+  top: 49%;
+  width: 43%;
+  height: 51%;
+  object-fit: contain;
+  opacity: 0.95;
+}
+
+/* Espirais com acabamento mais suave. */
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .morte-anel {
+  color: #d1d0c7;
+  filter: drop-shadow(0 1px 2px #000);
+}
+
+/* Pequenas variações de orientação entre os atributos. */
+.pl-root[data-afinidade="morte"]
+.pl-atributo-mente .morte-anel {
+  transform: rotate(115deg);
+}
+
+.pl-root[data-afinidade="morte"]
+.pl-atributo-presenca .morte-anel {
+  transform: rotate(235deg);
+}
+
+/* Aumenta o símbolo central de Morte. */
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .morte-simbolo-central {
+  width: 73%;
+  height: 83%;
+}
+
+/* Desce Físico e Mente. */
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributo-fisico,
+.pl-root[data-afinidade="morte"]
+.pl-atributos-pdf .pl-atributo-mente {
+  top: 31%;
+}
+/* Esconde a imagem nos outros elementos. */
+.conhecimento-simbolo-central {
+  display: none;
+}
+
+/* Remove a ampulheta antiga de Conhecimento. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .afinidade-simbolo-central {
+  display: none;
+}
+
+/* Novo símbolo central nas duas fichas. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .conhecimento-simbolo-central {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 49%;
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+
+  mix-blend-mode: screen;
+
+  /* Coloração dourada para acompanhar o tema. */
+  filter:
+    sepia(1)
+    saturate(3)
+    drop-shadow(0 0 3px #b58b1466);
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Mais espaço para o símbolo e os três atributos. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf {
+  aspect-ratio: 4 / 5;
+  margin: 24px auto;
+}
+
+/* Círculos proporcionais ao novo espaço. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo {
+  width: 25%;
+  height: auto;
+  aspect-ratio: 1;
+  padding: 0 !important;
+  transform: translate(-50%, -50%);
+}
+
+/* Físico: acima e à esquerda. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo-fisico {
+  left: 7%;
+  top: 33%;
+}
+
+/* Mente: acima e à direita. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo-mente {
+  left: 95%;
+  top: 33%;
+}
+
+/* Presença: abaixo do símbolo. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo-presenca {
+  left: 50%;
+  top: 88%;
+}
+/* Nome: Físico, Mente e Presença. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo-rolagem > span {
+  font-size: 12px;
+}
+
+/* Valor do atributo. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .pl-atributo-rolagem > strong {
+  font-size: 30px;
+}
+
+/* Frase em glifos ao redor dos atributos de Conhecimento. */
+.pl-root[data-afinidade="conhecimento"]
+.pl-atributos-pdf .conhecimento-anel-escrito {
+  display: block;
+  position: absolute;
+  inset: -25%;
+  width: 150%;
+  height: 150%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+
+  /* Integra o fundo preto dos recortes ao fundo da ficha. */
+  mix-blend-mode: screen;
+
+  /* Glifos dourados. */
+  filter: sepia(1) saturate(3);
+}
+
+/* Decoração exclusiva de Energia. */
+.energia-simbolo-central,
+.energia-anel {
+  display: none;
+}
+
+/* Área dos atributos nas duas fichas. */
+.pl-root[data-afinidade="energia"] .pl-atributos-pdf {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4 / 5;
+  margin: 24px auto;
+}
+
+/* Esconde o desenho antigo de Energia. */
+.pl-root[data-afinidade="energia"]
+.pl-atributos-pdf .afinidade-simbolo-central,
+.pl-root[data-afinidade="energia"]
+.pl-atributos-pdf .pl-atributos-conexoes {
+  display: none;
+}
+
+/* Imagem central enviada. */
+.pl-root[data-afinidade="energia"]
+.pl-atributos-pdf .energia-simbolo-central {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 49%;
+  width: 92%;
+  height: 92%;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Tamanho dos atributos. */
+.pl-root[data-afinidade="energia"]
+.pl-atributos-pdf .pl-atributo {
+  position: absolute;
+  width: 24%;
+  height: auto;
+  aspect-ratio: 1;
+  padding: 0 !important;
+  transform: translate(-50%, -50%);
+  overflow: visible;
+  z-index: 2;
+}
+
+/* Posições dos três círculos. */
+.pl-root[data-afinidade="energia"]
+.pl-atributos-pdf .pl-atributo-fisico {
+  left: 18%;
+  top: 37%;
+}
+
+.pl-root[data-afinidade="energia"]
+.pl-atributos-pdf .pl-atributo-mente {
+  left: 78%;
+  top: 37%;
+}
+
+.pl-root[data-afinidade="energia"]
+.pl-atributos-pdf .pl-atributo-presenca {
+  left: 50%;
+  top: 75%;
+}
+
+/* Remove os hexágonos antigos. */
+.pl-root[data-afinidade="energia"]
+.pl-atributos-pdf .pl-atributo::before,
+.pl-root[data-afinidade="energia"]
+.pl-atributos-pdf .pl-atributo::after {
+  display: none !important;
+}
+
+/* Contornos com falhas e separação de cores. */
+.pl-root[data-afinidade="energia"]
+.pl-atributos-pdf .energia-anel {
+  display: block;
+  position: absolute;
+  inset: -25%;
+  width: 150%;
+  height: 150%;
+  overflow: visible;
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px #a43cff66);
+  z-index: 0;
+}
+
+/* Varia a orientação das falhas. */
+.pl-root[data-afinidade="energia"]
+.pl-atributo-mente .energia-anel {
+  transform: rotate(16deg);
+}
+
+.pl-root[data-afinidade="energia"]
+.pl-atributo-presenca .energia-anel {
+  transform: rotate(-12deg);
+}
+
+/* Texto e número no centro do círculo. */
+.pl-root[data-afinidade="energia"]
+.pl-atributos-pdf .pl-atributo .pl-atributo-rolagem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  clip-path: none;
+  border: 0;
+  border-radius: 50%;
+  background: #090612cc;
+  color: #fff;
+  text-shadow: -1px 0 #00d9ff, 1px 0 #ff35c8;
+  z-index: 2;
+}
+
+.pl-root[data-afinidade="energia"]
+.pl-atributos-pdf .pl-atributo .pl-atributo-rolagem:hover {
+  background: #251039dd;
+}
+
+/* Mantém os campos de edição acessíveis. */
+.pl-root[data-afinidade="energia"]
+.pl-atributos-pdf .pl-atributo .pl-campo {
+  position: relative;
+  width: 80%;
+  z-index: 3;
+}
+
+.pl-root[data-afinidade="energia"]
+.pl-atributos-pdf .pl-atributos-lapis {
+  z-index: 5;
+}
+
+/* Patente, salário, categorias e carga. */
+.pl-root.pl-ficha-normal .pl-inventario-resumo {
+  background: #09090999;
+  color: #f5f0e6;
+  border: 1px solid var(--afinidade-cor, #b69d58);
+  border-radius: 5px;
+  padding: 12px;
+}
+
+.pl-root.pl-ficha-normal .pl-inventario-resumo .pl-campo > span,
+.pl-root.pl-ficha-normal .pl-inventario-resumo small {
+  color: #d8d2c8;
+}
+/* Espaçamento dos recursos. */
+.pl-root.pl-ficha-normal .pl-recurso {
+  margin: 18px 0;
+}
+
+.pl-root.pl-ficha-normal .pl-recurso > h3 {
+  margin: 0 0 8px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Barra maior, preservando o preenchimento existente. */
+.pl-root.pl-ficha-normal .pl-recurso .pl-barra {
+  display: flex;
+  align-items: stretch;
+  min-height: 44px;
+  overflow: hidden;
+  border: 1px solid var(--afinidade-cor, #b69d58);
+  border-radius: 8px;
+}
+
+/* Controles com espaço para toque no celular. */
+.pl-root.pl-ficha-normal .pl-recurso .pl-barra > button {
+  flex: 0 0 36px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: #0003;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.pl-root.pl-ficha-normal .pl-recurso .pl-barra > button:hover {
+  background: #0006;
+}
+
+/* Valor centralizado. */
+.pl-root.pl-ficha-normal .pl-recurso .pl-recurso-valor {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 0;
+  padding: 6px;
+  color: #fff;
+  font-size: 18px;
+  text-shadow: 0 1px 3px #000;
+}
+
+/* Quantidade acima do máximo. */
+.pl-root.pl-ficha-normal .pl-recurso-excedente {
+  padding: 2px 6px;
+  border: 1px solid #ffffff66;
+  border-radius: 4px;
+  background: #0006;
+  font-size: 11px;
+}
+
+/* Campos de edição recolhidos. */
+.pl-root.pl-ficha-normal .pl-recurso-edicao {
+  margin-top: 7px;
+}
+
+.pl-root.pl-ficha-normal .pl-recurso-edicao > summary {
+  color: #d8d2c8;
+  font-size: 11px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.pl-root.pl-ficha-normal .pl-recurso-edicao[open] > summary {
+  margin-bottom: 10px;
+}
+/* Prepara a camada decorativa sem bloquear os controles. */
+.pl-root.pl-ficha-normal .pl-recurso .pl-barra {
+  position: relative;
+  isolation: isolate;
+}
+
+
+/* Desativa a decoração simples da etapa anterior. */
+.pl-root.pl-ficha-normal .pl-recurso .pl-barra::after {
+  content: none;
+}
+
+/* Espaço para as molduras externas. */
+.pl-root.pl-ficha-normal .pl-recurso {
+  padding: 6px 8px;
+}
+
+.pl-root.pl-ficha-normal .pl-recurso .pl-barra {
+  overflow: visible;
+}
+
+/* SVG decorativo ao redor da barra. */
+.pl-root.pl-ficha-normal .pl-recurso-decoracao {
+  position: absolute;
+  left: -8px;
+  top: -12px;
+  width: calc(100% + 16px);
+  height: calc(100% + 24px);
+  overflow: visible;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Molduras ocultas até selecionar a afinidade. */
+.pl-recurso-decoracao > g {
+  display: none;
+}
+
+.pl-root[data-afinidade="energia"]
+.pl-recurso-decoracao > .pl-moldura-energia,
+.pl-root[data-afinidade="sangue"]
+.pl-recurso-decoracao > .pl-moldura-sangue,
+.pl-root[data-afinidade="morte"]
+.pl-recurso-decoracao > .pl-moldura-morte,
+.pl-root[data-afinidade="conhecimento"]
+.pl-recurso-decoracao > .pl-moldura-conhecimento {
+  display: block;
+}
+
+/* Conteúdo acima das molduras. */
+.pl-root.pl-ficha-normal .pl-recurso .pl-barra > button,
+.pl-root.pl-ficha-normal .pl-recurso .pl-recurso-valor {
+  position: relative;
+  z-index: 3;
+}
+
+/* Energia: formato arredondado como na referência. */
+.pl-root.pl-ficha-normal[data-afinidade="energia"]
+.pl-recurso .pl-barra {
+  border-radius: 24px;
+  border-color: #a43cff;
+}
+
+.pl-root[data-afinidade="energia"] .pl-moldura-energia {
+  filter: drop-shadow(0 0 2px #a43cff88);
+}
+
+/* Sangue: cantos retos dentro da borda rasgada. */
+.pl-root.pl-ficha-normal[data-afinidade="sangue"]
+.pl-recurso .pl-barra {
+  border-radius: 2px;
+  border-color: transparent;
+}
+
+/* Morte: contorno orgânico escuro. */
+.pl-root.pl-ficha-normal[data-afinidade="morte"]
+.pl-recurso .pl-barra {
+  border-radius: 12px 7px 13px 6px;
+  border-color: #55554c;
+}
+
+/* Conhecimento: moldura com escrita dourada. */
+.pl-root.pl-ficha-normal[data-afinidade="conhecimento"]
+.pl-recurso .pl-barra {
+  border-radius: 0;
+  border-color: #b58b14;
+}
+
+
+
+
+
+
+
+
+
+/* Glifos maiores e dourados. */
+.pl-root .pl-recurso-decoracao .pl-faixa-sigilos {
+  mix-blend-mode: screen;
+  filter: sepia(1) saturate(5) brightness(0.9);
+}
+
+/* Retorna as barras para uma altura menor. */
+.pl-root.pl-ficha-normal .pl-recurso .pl-barra {
+  height: 40px;
+  min-height: 40px;
+  position: relative;
+  overflow: visible;
+}
+
+.pl-root.pl-ficha-normal .pl-recurso .pl-barra > button {
+  height: 40px;
+  min-height: 40px;
+  font-size: 22px;
+}
+
+.pl-root.pl-ficha-normal .pl-recurso .pl-recurso-valor {
+  padding: 0 6px;
+  font-size: 16px;
+}
+
+/* O centro do SVG corresponde exatamente à barra. */
+.pl-root.pl-ficha-normal .pl-recurso-decoracao {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Agora os grupos estão dentro do grupo da máscara. */
+.pl-recurso-decoracao .pl-moldura-energia,
+.pl-recurso-decoracao .pl-moldura-sangue,
+.pl-recurso-decoracao .pl-moldura-morte,
+.pl-recurso-decoracao .pl-moldura-conhecimento {
+  display: none;
+}
+
+.pl-root[data-afinidade="energia"]
+.pl-recurso-decoracao .pl-moldura-energia,
+.pl-root[data-afinidade="sangue"]
+.pl-recurso-decoracao .pl-moldura-sangue,
+.pl-root[data-afinidade="morte"]
+.pl-recurso-decoracao .pl-moldura-morte,
+.pl-root[data-afinidade="conhecimento"]
+.pl-recurso-decoracao .pl-moldura-conhecimento {
+  display: block;
+}
+
+/* Espaço externo para a moldura não encostar no título e na edição. */
+.pl-root.pl-ficha-normal .pl-recurso {
+  padding: 0 12px;
+  margin: 24px 0;
+}
+
+.pl-root.pl-ficha-normal .pl-recurso > h3 {
+  margin-bottom: 22px;
+}
+
+.pl-root.pl-ficha-normal .pl-recurso-edicao {
+  margin-top: 22px;
+}
+
+/* Reativa o grupo que contém a máscara. */
+.pl-root.pl-ficha-normal
+.pl-recurso-decoracao > g[mask] {
+  display: block;
+}
+
+/* Arredonda o preenchimento e as pontas dos controles. */
+.pl-root.pl-ficha-normal[data-afinidade="energia"]
+.pl-recurso .pl-barra {
+  border-radius: 22px;
+  border: 0;
+}
+
+.pl-root.pl-ficha-normal[data-afinidade="energia"]
+.pl-recurso .pl-barra > button:first-of-type {
+  border-radius: 22px 0 0 22px;
+}
+
+.pl-root.pl-ficha-normal[data-afinidade="energia"]
+.pl-recurso .pl-barra > button:last-of-type {
+  border-radius: 0 22px 22px 0;
+}
+
+/* Mantém o contorno personalizado acima do preenchimento. */
+.pl-root.pl-ficha-normal[data-afinidade="energia"]
+.pl-recurso-decoracao {
+  z-index: 4;
+}
+
+.pl-root.pl-ficha-normal[data-afinidade="morte"]
+.pl-recurso {
+  padding-inline: 24px;
+}
+
+.pl-root.pl-ficha-normal[data-afinidade="morte"]
+.pl-recurso > h3 {
+  margin-bottom: 30px;
+}
+
+.pl-root.pl-ficha-normal[data-afinidade="morte"]
+.pl-recurso-edicao {
+  margin-top: 38px;
+}
+
+.pl-root.pl-ficha-normal[data-afinidade="morte"]
+.pl-recurso .pl-barra {
+  border-radius: 5px;
+}
+
+/* Recorte arredondado exclusivo de Energia. */
+.pl-root[data-afinidade="energia"]
+.pl-recurso-decoracao .pl-mascara-interior {
+  rx: 16px;
+  ry: 16px;
+}
+
+/* Preenchimento acompanhando a moldura arredondada. */
+.pl-root.pl-ficha-normal[data-afinidade="energia"]
+.pl-recurso .pl-barra {
+  border-radius: 999px !important;
+}
+
+.pl-root.pl-ficha-normal[data-afinidade="energia"]
+.pl-recurso .pl-barra > button:first-of-type {
+  border-radius: 999px 0 0 999px;
+}
+
+.pl-root.pl-ficha-normal[data-afinidade="energia"]
+.pl-recurso .pl-barra > button:last-of-type {
+  border-radius: 0 999px 999px 0;
+}
+
+/* Barras temáticas da ficha resumida. */
+.pl-root.frc-ficha .frc-recurso-tematico {
+  position: relative;
+  isolation: isolate;
+  min-height: 40px;
+  margin: 30px 14px;
+  overflow: visible;
+  border-radius: 5px;
+}
+
+/* Preenchimento mantém os cantos da barra. */
+.pl-root.frc-ficha
+.frc-recurso-tematico .frc-recurso-preenchimento {
+  height: 100%;
+  max-width: 100%;
+  border-radius: inherit;
+}
+
+/* Moldura externa compartilhada com a ficha normal. */
+.pl-root.frc-ficha
+.frc-recurso-tematico .pl-recurso-decoracao {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Ativa o grupo que contém as molduras. */
+.pl-root.frc-ficha
+.pl-recurso-decoracao > g[mask] {
+  display: block;
+}
+
+/* Valores e círculos de vida acima da decoração. */
+.pl-root.frc-ficha
+.frc-recurso-tematico .frc-recurso-texto {
+  position: relative;
+  z-index: 3;
+  padding: 10px;
+  line-height: 20px;
+}
+
+.pl-root.frc-ficha
+.frc-recurso-tematico > .circulos-vida {
+  position: relative;
+  z-index: 3;
+}
+
+/* Energia: acompanha o contorno arredondado. */
+.pl-root.frc-ficha[data-afinidade="energia"]
+.frc-recurso-tematico {
+  border-radius: 999px;
+}
+
+/* Espaço adicional para as curvas de Morte. */
+.pl-root.frc-ficha[data-afinidade="morte"]
+.frc-recurso-tematico {
+  margin: 42px 24px;
+}
+
+.pl-root.frc-ficha .frc-recurso-grupo {
+  padding: 0 12px;
+  margin: 24px 0;
+}
+
+.pl-root.frc-ficha .frc-recurso-grupo > h3 {
+  margin: 0 0 22px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.pl-root.frc-ficha
+.frc-recurso-grupo .frc-barra-editavel {
+  display: flex;
+  align-items: stretch;
+  height: 40px;
+  min-height: 40px;
+  margin: 0;
+}
+
+.pl-root.frc-ficha .frc-barra-editavel > button {
+  position: relative;
+  z-index: 3;
+  flex: 0 0 32px;
+  width: 32px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: #0003;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.pl-root.frc-ficha .frc-barra-editavel > button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.pl-root.frc-ficha .frc-recurso-centro {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 3px #000;
+}
+
+.pl-root.frc-ficha .frc-excedente {
+  margin-left: 6px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #0006;
+  font-size: 11px;
+}
+
+.pl-root.frc-ficha .frc-edicao-recurso {
+  margin-top: 22px;
+}
+
+.pl-root.frc-ficha .frc-edicao-recurso > summary {
+  text-align: center;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.pl-root.frc-ficha .frc-edicao-recurso-campos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.pl-root.frc-ficha .frc-edicao-recurso-campos label {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  font-size: 11px;
+}
+
+.pl-root.frc-ficha .frc-edicao-recurso-campos input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 7px;
+}
+
+/* Energia: acompanha os cantos arredondados. */
+.pl-root.frc-ficha[data-afinidade="energia"]
+.frc-barra-editavel > button:first-of-type {
+  border-radius: 999px 0 0 999px;
+}
+
+.pl-root.frc-ficha[data-afinidade="energia"]
+.frc-barra-editavel > button:last-of-type {
+  border-radius: 0 999px 999px 0;
+}
+
+/* Espaço para os desenhos de Morte. */
+.pl-root.frc-ficha[data-afinidade="morte"]
+.frc-recurso-grupo {
+  padding-inline: 24px;
+}
+
+.pl-root.frc-ficha[data-afinidade="morte"]
+.frc-recurso-grupo > h3 {
+  margin-bottom: 30px;
+}
+
+.pl-root.frc-ficha[data-afinidade="morte"]
+.frc-edicao-recurso {
+  margin-top: 38px;
+}
+
+/* Símbolo central da ficha sem afinidade. */
+.pl-root .pl-atributos-pdf .pl-simbolo-sem-afinidade {
+  display: none;
+}
+
+.pl-root[data-afinidade="nenhuma"] .pl-atributos-pdf,
+.pl-root[data-afinidade=""] .pl-atributos-pdf {
+  position: relative;
+  isolation: isolate;
+}
+
+.pl-root[data-afinidade="nenhuma"]
+.pl-atributos-pdf .pl-simbolo-sem-afinidade,
+.pl-root[data-afinidade=""]
+.pl-atributos-pdf .pl-simbolo-sem-afinidade {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+
+  width: 87%;
+  height: 83%;
+  max-width: none;
+  object-fit: contain;
+
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.9;
+  z-index: 0;
+}
+
+/* Remove o círculo e as conexões antigos do centro. */
+.pl-root[data-afinidade="nenhuma"] .pl-atributos-conexoes,
+.pl-root[data-afinidade=""] .pl-atributos-conexoes,
+.pl-root[data-afinidade="nenhuma"]
+.pl-atributos-pdf .afinidade-simbolo-central,
+.pl-root[data-afinidade=""]
+.pl-atributos-pdf .afinidade-simbolo-central {
+  display: none !important;
+}
+
+/* Mantém os atributos acima do símbolo. */
+.pl-root[data-afinidade="nenhuma"]
+.pl-atributos-pdf .pl-atributo,
+.pl-root[data-afinidade=""]
+.pl-atributos-pdf .pl-atributo {
+  z-index: 2;
+}
