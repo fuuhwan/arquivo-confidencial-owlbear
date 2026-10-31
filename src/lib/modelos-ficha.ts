@@ -1,3 +1,12 @@
+export type MunicaoVisual = {
+  id: string;
+  nome: string;
+  quantidade: number;
+  unidade: "cena" | "turno" | "";
+  restante: number;
+  duracao: number;
+};
+
 export type PericiaVisual = {
   nome: string; atributo?: string; dados: number; bonus: number;
   dadosExtras?: number; treino?: number; outros?: number;
@@ -26,6 +35,7 @@ export type RitualVisual = {
   dados?:{nome:string;dados:string}[];
 };
 export type ConteudoFicha = {
+  municoes?: MunicaoVisual[];
   nome:string;foto?:string;afinidade?:string;elemento?:string;
   classe?:string;nivel?:number;nex?:number;
   atributos?:{fisico:number;mente:number;presenca:number};

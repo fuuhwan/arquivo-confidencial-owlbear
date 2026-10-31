@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 import { get, onValue, ref } from "firebase/database";
 import { database } from "./lib/firebase";
 import { editarRecurso } from "./lib/editar-recurso";
-
+import MunicoesCombate from "./MunicoesCombate";
 import RecursoFicha from "./RecursoFicha";
 import AbasFicha from "./AbasFicha";
 import useRolagemFicha from "./useRolagemFicha";
@@ -310,6 +310,14 @@ const texto = teste(
         <div className="frc-defesas">{[["Defesa",f.defesa],["Bloqueio",f.bloqueio],["Esquiva",f.esquiva],["Deslocamento",typeof f.deslocamento === "number" ? `${f.deslocamento} m` : f.deslocamento]].filter(([,v])=>v!==undefined).map(([nome,v])=><div key={String(nome)}><strong>{v}</strong>{nome}</div>)}</div>
       </>}
       {aba === "combate" && <ConsumirAcao key={`${p.id}/${vez}/${p.acoes}`} combateId={combateId} participanteId={p.id} vez={vez} acoes={p.acoes ?? 2}/>}
+      {aba === "combate" && p.tipo === "jogador" && (
+  <MunicoesCombate
+    key={`${combateId}/${p.id}/municoes`}
+    combateId={combateId}
+    participanteId={p.id}
+    municoes={f.municoes ?? []}
+  />
+)}
       {aba !== "atributos" && aba !== "efeitos" && <AbasFicha key={`${p.id}-${aba}`} aba={aba} ficha={f} tipo={p.tipo} acoes={p.acoes??2} executar={rolagem.executar} enviando={rolagem.enviando}/>}
       {aba === "combate" && p.tipo === "jogador" && (
   <section style={{ marginTop: 20 }}>
