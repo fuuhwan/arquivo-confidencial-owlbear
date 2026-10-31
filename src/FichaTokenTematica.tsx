@@ -311,7 +311,29 @@ const texto = teste(
       </>}
       {aba === "combate" && <ConsumirAcao key={`${p.id}/${vez}/${p.acoes}`} combateId={combateId} participanteId={p.id} vez={vez} acoes={p.acoes ?? 2}/>}
       {aba !== "atributos" && aba !== "efeitos" && <AbasFicha key={`${p.id}-${aba}`} aba={aba} ficha={f} tipo={p.tipo} acoes={p.acoes??2} executar={rolagem.executar} enviando={rolagem.enviando}/>}
-      {aba === "efeitos" && <>{(f.efeitosAtivos??[]).map((e,i)=><details key={e.id||i}><summary>{e.nome||"Efeito"}</summary><p>{e.descricao}</p></details>)}{!(f.efeitosAtivos??[]).length&&<p>Nenhum efeito publicado.</p>}</>}
+      {aba === "combate" && p.tipo === "jogador" && (
+  <section style={{ marginTop: 20 }}>
+    <h2>RITUAIS FAVORITOS</h2>
+
+    {(f.rituais ?? []).some(
+      (ritual) => ritual.favorito === true,
+    ) ? (
+      <AbasFicha
+        key={`${p.id}-rituais-combate`}
+        aba="rituais"
+        ficha={f}
+        tipo={p.tipo}
+        acoes={p.acoes ?? 2}
+        executar={rolagem.executar}
+        enviando={rolagem.enviando}
+        somenteFavoritos
+      />
+    ) : (
+      <p>Nenhum ritual favorito publicado.</p>
+    )}
+  </section>
+)}
+      {(aba === "efeitos" || aba === "combate") &&  <>{(f.efeitosAtivos??[]).map((e,i)=><details key={e.id||i}><summary>{e.nome||"Efeito"}</summary><p>{e.descricao}</p></details>)}{!(f.efeitosAtivos??[]).length&&<p>Nenhum efeito publicado.</p>}</>}
     </section>}
     {rolagem.resultado &&
   createPortal(

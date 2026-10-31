@@ -18,6 +18,7 @@ export type HabilidadeVisual = {
   ataques?: { nome:string; alcance:string; quantidade:number; dados:number; bonus:number; critico:number; multiplicador:number; dano:string;tipo:string;danosAdicionais?:{dano:string;tipo:string}[] }[];
 };
 export type RitualVisual = {
+  favorito?: boolean;
   nome:string; elemento?:string; circulo?: string; imagens?:string[];
   execucao?:string; alcance?:string; alvo?:string; area?:string;
   duracao?:string; resistencia?:string; descricao?:string;

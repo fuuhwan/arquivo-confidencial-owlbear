@@ -17,9 +17,25 @@ export function Imagens({imagens,nome}:{imagens?:string[];nome:string}) {
   const [aberta,setAberta]=useState('');
   return <>{Boolean(imagens?.length)&&<div className="ow-imagens">{imagens!.filter(i=>typeof i==='string'&&i&&!i.startsWith('midia:')).map((src,i)=><button key={i} onClick={()=>setAberta(src)} aria-label={`Ampliar imagem de ${nome}`}><img src={src} alt={nome} loading="lazy"/></button>)}</div>}{aberta&&<div className="ow-imagem-overlay" role="dialog" aria-modal="true" aria-label={nome} onClick={()=>setAberta('')}><button onClick={()=>setAberta('')} aria-label="Fechar imagem">×</button><img src={aberta} alt={nome}/></div>}</>;
 }
-type Props={aba:string;ficha:ConteudoFicha;tipo:'jogador'|'criatura';acoes:number;executar:ExecutarRolagem;enviando:boolean};
-export default function AbasFicha({aba,ficha:f,tipo,acoes,executar,enviando}:Props) {
-  const [ajustesDados, setAjustesDados] = useState<
+type Props = {
+  aba: string;
+  ficha: ConteudoFicha;
+  tipo: "jogador" | "criatura";
+  acoes: number;
+  executar: ExecutarRolagem;
+  enviando: boolean;
+  somenteFavoritos?: boolean;
+};
+export default function AbasFicha({
+  aba,
+  ficha: f,
+  tipo,
+  acoes,
+  executar,
+  enviando,
+  somenteFavoritos = false,
+}: Props) {
+    const [ajustesDados, setAjustesDados] = useState<
   Record<string, number>
 >({});
   const [busca,setBusca]=useState(''),[informacao,setInformacao]=useState('');
@@ -121,7 +137,11 @@ const dadosDoTeste =
     <input className="ow-busca" placeholder="Pesquisar…" aria-label={`Pesquisar em ${aba}`} value={busca} onChange={e=>setBusca(e.target.value)}/>
     {aba==='combate'&&<><p className="ow-ajuda">O dado do ataque rola acerto e dano e solicita 1 ação. Dano isolado não consome ação.</p>{bloqueado&&<small>{enviando?'Enviando rolagem…':'Sem ações disponíveis para atacar.'}</small>}{tipo==='jogador'?(f.ataques??[]).filter(a=>filtrar(a.nome)).map((a,i)=>cartaoAtaque(a,i)):<>{[...(f.acoes??[]),...(f.poderes??[])].filter(h=>filtrar(h.nome)).map((h,i)=><section className="ow-grupo-criatura" key={h.id||i}><h3>{h.nome}</h3>{h.descricao&&<p>{h.descricao}</p>}{(h.ataques??[]).map((a,j)=>cartaoAtaque({...a,adicionais:a.danosAdicionais},j,a))}</section>)}</>}</>}
     {aba==='pericias'&&<><h3>PERÍCIAS</h3><p className="ow-ajuda">Clique no dado ou no nome para rolar. Os campos mostram os valores publicados pela ficha.</p><div className="pl-tabela ow-tabela"><table><thead><tr><th>Perícia</th><th>Atrib.</th><th>Dados extras</th><th>Treino</th><th>Outros</th><th>Ações</th></tr></thead><tbody>{[...(f.pericias??[]),...(f.periciasAdicionais??[])].filter(p=>filtrar(p.nome)||(normal(p.nome)==='aptidao'&&(f.aptidoes??[]).some(a=>filtrar(a.nome)))).map((p,i)=><Fragment key={`p-${i}`}>{linhaPericia(p,i)}{normal(p.nome)==='aptidao'&&(f.aptidoes??[]).filter(x=>filtrar(x.nome)||filtrar(p.nome)).map((a,j)=>linhaPericia(a,j,true))}</Fragment>)}</tbody></table></div></>}
-    {aba==='rituais'&&<><div className="pl-dt"><strong>{10+(f.nivel??1)*2+(f.atributos?.presenca??0)}</strong><span>DT DE RITUAIS</span></div>{(f.rituais??[]).filter(r=>filtrar(r.nome)).map((r,i)=><details key={i} className="pl-registro-salvo" style={fundo(r.elemento)}><summary>{r.nome} <Etiquetas texto={r.elemento??''}/></summary><section className="pl-ritual-cartao"><div className="pl-ritual-rolagens">{(r.dados??[]).filter(d=>d.dados).map((d,j)=><div key={j}><small>{d.nome}</small><button className="ow-rolagem-ritual" disabled={enviando} onClick={()=>void executar(()=>{const x=expressao(d.dados);return `${r.nome} · ${d.nome}: ${x.detalhes} = ${x.total}`;})}><D20Icon/> {d.dados}</button></div>)}</div><div className="pl-ritual-corpo"><span className="pl-ritual-elemento">{r.elemento||'Sem elemento'} {r.circulo}</span>{Boolean(r.imagens?.length)&&<div className="pl-ritual-simbolo"><Imagens imagens={r.imagens} nome={r.nome}/></div>}<div className="pl-ritual-status">{[['Execução',r.execucao],['Alcance',r.alcance],['Alvo',r.alvo],['Área',r.area],['Duração',r.duracao],['Resistência',r.resistencia]].filter(([,v])=>v).map(([k,v])=><p key={k}><span>{k}:</span> {v}</p>)}</div><p className="pl-ritual-texto">{r.descricao}</p>{(r.aprimoramentos??[]).map((a,j)=><p key={j} className="pl-ritual-texto"><span>{a.nome}{a.custo?` (${a.custo})`:''}:</span> {a.descricao}</p>)}</div></section></details>)}{!(f.rituais??[]).length&&<p>Nenhum ritual publicado.</p>}</>}
+    {aba==='rituais'&&<><div className="pl-dt"><strong>{10+(f.nivel??1)*2+(f.atributos?.presenca??0)}</strong><span>DT DE RITUAIS</span></div>{(f.rituais ?? []).filter(
+  (r) =>
+    filtrar(r.nome) &&
+    (!somenteFavoritos || r.favorito === true),
+).map((r,i)=><details key={i} className="pl-registro-salvo" style={fundo(r.elemento)}><summary>{r.nome} <Etiquetas texto={r.elemento??''}/></summary><section className="pl-ritual-cartao"><div className="pl-ritual-rolagens">{(r.dados??[]).filter(d=>d.dados).map((d,j)=><div key={j}><small>{d.nome}</small><button className="ow-rolagem-ritual" disabled={enviando} onClick={()=>void executar(()=>{const x=expressao(d.dados);return `${r.nome} · ${d.nome}: ${x.detalhes} = ${x.total}`;})}><D20Icon/> {d.dados}</button></div>)}</div><div className="pl-ritual-corpo"><span className="pl-ritual-elemento">{r.elemento||'Sem elemento'} {r.circulo}</span>{Boolean(r.imagens?.length)&&<div className="pl-ritual-simbolo"><Imagens imagens={r.imagens} nome={r.nome}/></div>}<div className="pl-ritual-status">{[['Execução',r.execucao],['Alcance',r.alcance],['Alvo',r.alvo],['Área',r.area],['Duração',r.duracao],['Resistência',r.resistencia]].filter(([,v])=>v).map(([k,v])=><p key={k}><span>{k}:</span> {v}</p>)}</div><p className="pl-ritual-texto">{r.descricao}</p>{(r.aprimoramentos??[]).map((a,j)=><p key={j} className="pl-ritual-texto"><span>{a.nome}{a.custo?` (${a.custo})`:''}:</span> {a.descricao}</p>)}</div></section></details>)}{!(f.rituais??[]).length&&<p>Nenhum ritual publicado.</p>}</>}
     {aba==='habilidades'&&<>{(tipo==='criatura'?(f.poderes??[]):(f.habilidades??[])).filter(h=>filtrar(`${h.nome} ${h.descricao??''}`)).map(habilidade)}</>}
   </>;
 }
