@@ -1,1 +1,161 @@
-.ac-iniciativa{min-width:0;overflow-wrap:anywhere}.ac-iniciativa *{box-sizing:border-box}.ac-iniciativa .cabecalho{display:flex;align-items:center;justify-content:space-between;gap:12px}.ac-iniciativa h1{font-size:21px}.ac-iniciativa-colunas{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}.ac-iniciativa-colunas>section{min-width:0}.ac-iniciativa .iniciativa-controles{display:flex;flex-wrap:wrap;gap:8px}.ac-iniciativa button{min-height:40px;white-space:normal}.ac-iniciativa .iniciativa-controles button{flex:1 1 130px}.ac-iniciativa .linha,.ac-iniciativa .valores{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.ac-iniciativa .participante h2{font-size:16px;margin:0}.ac-iniciativa .participante{padding:12px;margin:8px 0;border:1px solid #ffffff33;border-radius:6px}.ac-iniciativa .participante.ativo{border-color:#d9b65a;background:#d9b65a18}.ac-historico{border-top:1px solid #ffffff33;padding-top:16px}.ac-historico input{width:100%;min-width:0;font-size:16px;padding:10px;margin-bottom:10px}.ac-ajuda{font-size:12px;line-height:1.5;opacity:.8}.ac-rolagem{border:1px solid #ffffff33;border-radius:6px;margin-bottom:8px;padding:10px}.ac-rolagem summary{cursor:pointer;overflow-wrap:anywhere}.ac-rolagem summary span,.ac-rolagem time{display:block;font-size:12px;margin-top:4px;opacity:.8}.ac-rolagem pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;line-height:1.5}.ac-iniciativa button:focus-visible,.ac-rolagem summary:focus-visible{outline:2px solid #d9b65a;outline-offset:3px}@media(min-width:760px){.ac-iniciativa-colunas{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ac-historico{border-top:0;border-left:1px solid #ffffff33;padding-top:0;padding-left:16px}}
+.ac-iniciativa {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.ac-iniciativa * {
+  box-sizing: border-box;
+}
+
+.ac-iniciativa .cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ac-iniciativa h1 {
+  font-size: 21px;
+}
+
+/* Histórico à esquerda e iniciativa à direita. */
+.ac-iniciativa-colunas {
+  display: grid;
+  grid-template-columns:
+    minmax(190px, 0.8fr)
+    minmax(280px, 1.2fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.ac-iniciativa-colunas > section {
+  min-width: 0;
+}
+
+.ac-iniciativa-colunas > section:first-child {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.ac-iniciativa-colunas > .ac-historico {
+  grid-column: 1;
+  grid-row: 1;
+  border: 1px solid #ffffff22;
+  border-radius: 8px;
+  padding: 12px;
+  background: #171510;
+  max-height: 80dvh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.ac-iniciativa .iniciativa-controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ac-iniciativa button {
+  min-height: 40px;
+  white-space: normal;
+}
+
+.ac-iniciativa .iniciativa-controles button {
+  flex: 1 1 130px;
+}
+
+.ac-iniciativa .linha,
+.ac-iniciativa .valores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.ac-iniciativa .participante h2 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.ac-iniciativa .participante {
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ffffff33;
+  border-radius: 6px;
+}
+
+.ac-iniciativa .participante.ativo {
+  border-color: #d9b65a;
+  background: #d9b65a18;
+}
+
+.ac-historico h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.ac-historico input {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.ac-ajuda {
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.ac-rolagem {
+  border: 1px solid #ffffff33;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  padding: 10px;
+}
+
+.ac-rolagem summary {
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.ac-rolagem summary span,
+.ac-rolagem time {
+  display: block;
+  font-size: 12px;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+.ac-rolagem pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: inherit;
+  line-height: 1.5;
+}
+
+.ac-iniciativa button:focus-visible,
+.ac-rolagem summary:focus-visible {
+  outline: 2px solid #d9b65a;
+  outline-offset: 3px;
+}
+
+/* Em telas estreitas, evita rolagem horizontal. */
+@media (max-width: 540px) {
+  .ac-iniciativa-colunas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ac-iniciativa-colunas > section:first-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .ac-iniciativa-colunas > .ac-historico {
+    grid-column: 1;
+    grid-row: 2;
+    max-height: 60dvh;
+  }
+}

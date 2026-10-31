@@ -58,7 +58,7 @@ async function abrirIniciativa() {
     await OBR.popover.open({
       id,
       url: url.toString(),
-      width: Math.max(280, Math.min(440, largura - 32)),
+      width: Math.max(280, Math.min(820, largura - 32)),
       height: Math.max(300, Math.min(700, altura - 32)),
       anchorReference: "POSITION",
       anchorPosition: { left: 20, top: 60 },
