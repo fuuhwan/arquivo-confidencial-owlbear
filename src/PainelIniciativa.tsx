@@ -4,7 +4,7 @@ import { onValue, push, ref, serverTimestamp, set } from "firebase/database";
 import { auth, database } from "./lib/firebase";
 import HistoricoRolagensCombate from "./HistoricoRolagensCombate";
 import "./PainelIniciativa.css";
-
+import RedimensionarIniciativa from "./RedimensionarIniciativa";
 type Comando = "avancar" | "voltar" | "reiniciar";
 type Props = { combateId: string; turno: number; vez?: string; ativo?: string | null; mestre: boolean;
   participantes: { id: string; nome: string; iniciativa: number; acoes?: number }[] };
@@ -47,7 +47,11 @@ export default function PainelIniciativa({ combateId, turno, vez, ativo, mestre,
   const bloqueado = enviando || !vez || participantes.length === 0;
   const ordenados = [...participantes].sort((a, b) => b.iniciativa - a.iniciativa);
   const atual = participantes.find((p) => p.id === ativo);
-  return <section className="painel-iniciativa ac-iniciativa" data-operacao-pendente={enviando}>
+  return (
+  <section
+    className="painel-iniciativa ac-iniciativa"
+    data-operacao-pendente={enviando}
+  >
     <header className="cabecalho"><div><span className="etiqueta">ARQUIVO CONFIDENCIAL</span><h1>Iniciativa e rolagens</h1></div>
       <button type="button" className="secundario" aria-label="Fechar iniciativa" onClick={() => { void OBR.popover.close("br.arquivo-confidencial.owlbear/painel-iniciativa").catch(console.error); }}>×</button>
     </header>
@@ -65,6 +69,13 @@ export default function PainelIniciativa({ combateId, turno, vez, ativo, mestre,
         <div className="linha"><h2>{i + 1}. {p.nome}</h2>{ativo === p.id && <span className="vez">NA VEZ</span>}</div>
         <div className="valores"><span>Iniciativa: {p.iniciativa}</span><span>Ações: {p.acoes ?? 2}</span></div>
       </article>)}{!participantes.length && <p>O combate ainda não tem participantes.</p>}</section>
-    </section><HistoricoRolagensCombate key={combateId} combateId={combateId} mestre={mestre} /></div>
-  </section>;
+    </section> <HistoricoRolagensCombate
+          key={combateId}
+          combateId={combateId}
+          mestre={mestre}
+        />
+      </div>
+  <RedimensionarIniciativa />
+    </section>
+  );
 }

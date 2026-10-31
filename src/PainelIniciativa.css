@@ -159,3 +159,166 @@
     max-height: 60dvh;
   }
 }
+
+/* Tema da janela de combate. */
+html:has(.ac-iniciativa),
+body:has(.ac-iniciativa) {
+  background: #292218;
+  color: #f3e9d2;
+}
+
+.painel:has(.ac-iniciativa) {
+  padding: 12px 12px 36px;
+}
+
+.ac-iniciativa {
+  color: #f3e9d2;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.ac-iniciativa .cabecalho {
+  border-bottom: 1px solid #92763d;
+  padding-bottom: 12px;
+}
+
+.ac-iniciativa .etiqueta {
+  color: #d8bb7d;
+}
+
+.ac-iniciativa h1,
+.ac-iniciativa h2 {
+  color: #fff1cb;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.ac-iniciativa button {
+  background: #423a29;
+  color: #fff1cb;
+  border: 1px solid #ad8c43;
+  border-radius: 6px;
+  box-shadow: inset 0 0 8px #0003;
+  font-family: inherit;
+}
+
+.ac-iniciativa button:hover:not(:disabled) {
+  background: #59492c;
+  border-color: #e5c774;
+}
+
+.ac-iniciativa button:disabled {
+  opacity: 0.45;
+}
+
+.ac-iniciativa .secundario {
+  background: #302a20;
+  color: #eadbb9;
+}
+
+.ac-iniciativa .resumo > div {
+  background: #191610;
+  border: 1px solid #79643b;
+  border-radius: 6px;
+}
+
+.ac-iniciativa .resumo span {
+  color: #dbc99f;
+}
+
+.ac-iniciativa .resumo strong {
+  color: #fff1cb;
+}
+
+.ac-iniciativa .participante {
+  background: #171510;
+  border: 1px solid #75613a;
+  border-radius: 8px;
+}
+
+.ac-iniciativa .participante.ativo {
+  background: #2d1c3c;
+  border-color: #c16cff;
+  box-shadow:
+    inset 3px 0 #c16cff,
+    0 0 10px #a844db22;
+}
+
+.ac-iniciativa .vez {
+  color: #dfacff;
+}
+
+.ac-iniciativa .valores {
+  color: #e5d6b4;
+}
+
+.ac-iniciativa-colunas > .ac-historico {
+  background: #171510;
+  border: 1px solid #75613a;
+  border-radius: 8px;
+}
+
+.ac-iniciativa .ac-historico input {
+  background: #252017;
+  color: #fff1cb;
+  border: 1px solid #79643b;
+  border-radius: 5px;
+}
+
+.ac-iniciativa .ac-historico input::placeholder {
+  color: #bcad91;
+}
+
+.ac-iniciativa .ac-rolagem {
+  background: linear-gradient(
+    135deg,
+    #30271b,
+    #100e0b
+  );
+  border-color: #91733d;
+}
+
+.ac-iniciativa .ac-rolagem summary strong {
+  color: #fff1cb;
+}
+
+.ac-iniciativa .ac-rolagem pre {
+  color: #f1e4c7;
+  border-top: 1px solid #79643b;
+  padding-top: 10px;
+}
+
+/* Alça fixa no canto inferior direito. */
+.ac-iniciativa .ac-redimensionar {
+  position: fixed;
+  right: 2px;
+  bottom: 2px;
+  z-index: 100;
+  width: 32px;
+  height: 32px;
+  min-height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #292218;
+  color: #e5c774;
+  border: 1px solid #ad8c43;
+  border-radius: 6px 0 0 0;
+  font-size: 23px;
+  cursor: nwse-resize;
+  touch-action: none;
+  user-select: none;
+}
+
+.ac-erro-redimensionar {
+  position: fixed;
+  right: 40px;
+  bottom: 8px;
+  max-width: calc(100vw - 60px);
+  margin: 0;
+  padding: 8px;
+  background: #492322;
+  color: #fff;
+  border: 1px solid #b95d58;
+  border-radius: 5px;
+  font-size: 12px;
+}
