@@ -461,7 +461,7 @@ function valorCurvo(
 
 valorCurvo(
   "valor-vida-curvo",
-  `PV ${recursos.vida} / ${recursos.vidaMax}`,
+  `V.A. ${recursos.vida} / ${recursos.vidaMax}`,
   true,
   "#a80505",
 );
@@ -469,7 +469,7 @@ valorCurvo(
 if (recursos.determinacaoMax > 0) {
   valorCurvo(
     "valor-pd-curvo",
-    `PD ${recursos.determinacao} / ${recursos.determinacaoMax}`,
+    `D.A. ${recursos.determinacao} / ${recursos.determinacaoMax}`,
     false,
     
     "#2891d8",
