@@ -322,3 +322,159 @@ body:has(.ac-iniciativa) {
   border-radius: 5px;
   font-size: 12px;
 }
+.ac-iniciativa .ac-turno {
+  margin: 12px 0 16px;
+  color: #fff1cb;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+/* Cartões de rolagem por afinidade. */
+.ac-evento-rolagem {
+  --dado-cor: #b5b5b5;
+  --dado-fundo: #252525;
+  margin: 0 0 18px;
+}
+
+.ac-evento-rolagem[data-afinidade="sangue"] {
+  --dado-cor: #e73140;
+  --dado-fundo: #530d14;
+}
+
+.ac-evento-rolagem[data-afinidade="morte"] {
+  --dado-cor: #bab6b0;
+  --dado-fundo: #232323;
+}
+
+.ac-evento-rolagem[data-afinidade="energia"] {
+  --dado-cor: #cf79ff;
+  --dado-fundo: #421254;
+}
+
+.ac-evento-rolagem[data-afinidade="conhecimento"] {
+  --dado-cor: #e4bb37;
+  --dado-fundo: #574007;
+}
+
+.ac-evento-rolagem[data-afinidade="medo"] {
+  --dado-cor: #f1eee7;
+  --dado-fundo: #494949;
+}
+
+.ac-iniciativa .ac-evento-rolagem h3 {
+  margin: 0 0 6px;
+  color: #fff1cb;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.ac-dado-tematico {
+  overflow: hidden;
+  border: 1px solid var(--dado-cor);
+  border-radius: 5px;
+  color: #fff5df;
+  background:
+    repeating-linear-gradient(
+      125deg,
+      transparent 0 4px,
+      #ffffff05 4px 5px,
+      transparent 5px 12px
+    ),
+    radial-gradient(
+      ellipse at 15% 25%,
+      var(--dado-fundo),
+      #090909 85%
+    );
+  box-shadow: inset 0 0 18px #0008;
+}
+
+.ac-dado-tematico summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 64px;
+  padding: 10px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.ac-dado-tematico summary::-webkit-details-marker {
+  display: none;
+}
+
+.ac-dado-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.ac-dado-texto > strong {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.ac-ver-calculo {
+  font-size: 12px;
+}
+
+.ac-dado-tematico[open] .ac-ver-calculo {
+  font-size: 0;
+}
+
+.ac-dado-tematico[open] .ac-ver-calculo::after {
+  content: "Ocultar cálculo";
+  font-size: 12px;
+}
+
+.ac-dado-resultado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 42px;
+}
+
+.ac-dado-resultado > strong {
+  font-size: 28px;
+  line-height: 1;
+  color: #fff5df;
+  text-shadow: 2px 2px 2px #000;
+}
+
+.ac-dado-resultado > small {
+  margin-top: 5px;
+  color: var(--dado-cor);
+  font-size: 9px;
+  letter-spacing: 0.5px;
+}
+
+.ac-dado-tematico pre {
+  margin: 0;
+  padding: 12px;
+  border-top: 1px solid var(--dado-cor);
+  background: #0008;
+  color: #fff5df;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.ac-evento-rolagem > footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 3px 6px;
+  margin-top: 5px;
+  color: #dcc89a;
+  font-size: 9px;
+  text-align: right;
+}
+
+.ac-dado-tematico summary:focus-visible {
+  outline: 2px solid var(--dado-cor);
+  outline-offset: -3px;
+}

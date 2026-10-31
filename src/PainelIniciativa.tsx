@@ -46,7 +46,6 @@ export default function PainelIniciativa({ combateId, turno, vez, ativo, mestre,
   }
   const bloqueado = enviando || !vez || participantes.length === 0;
   const ordenados = [...participantes].sort((a, b) => b.iniciativa - a.iniciativa);
-  const atual = participantes.find((p) => p.id === ativo);
   return (
   <section
     className="painel-iniciativa ac-iniciativa"
@@ -56,14 +55,17 @@ export default function PainelIniciativa({ combateId, turno, vez, ativo, mestre,
       <button type="button" className="secundario" aria-label="Fechar iniciativa" onClick={() => { void OBR.popover.close("br.arquivo-confidencial.owlbear/painel-iniciativa").catch(console.error); }}>×</button>
     </header>
     <div className="ac-iniciativa-colunas"><section aria-label="Controle de iniciativa">
-      <div className="resumo"><div><span>Contador de turno</span><strong>{turno}</strong></div><div><span>Participantes</span><strong>{participantes.length}</strong></div></div>
-      <p role="status">Na vez: <strong>{atual?.nome ?? "Nenhum participante ativo"}</strong></p>
+      
+      
       {mestre && <div className="iniciativa-controles">
         <button type="button" disabled={bloqueado} onClick={() => void enviar("voltar")}>← Voltar turno</button>
         <button type="button" disabled={bloqueado} onClick={() => void enviar("avancar")}>Passar turno →</button>
         <button type="button" className="secundario" disabled={bloqueado} onClick={() => void enviar("reiniciar")}>Reiniciar contador</button>
       </div>}
       {enviando && <p role="status">Aguardando confirmação do site do mestre…</p>}
+      <p className="ac-turno">
+  Turno: <strong>{turno}</strong>
+</p>
       {erro && <p className="erro" role="alert">{erro}</p>}
       <section className="lista">{ordenados.map((p, i) => <article key={p.id} className={`participante ${ativo === p.id ? "ativo" : ""}`} aria-current={ativo === p.id ? "step" : undefined}>
         <div className="linha"><h2>{i + 1}. {p.nome}</h2>{ativo === p.id && <span className="vez">NA VEZ</span>}</div>
