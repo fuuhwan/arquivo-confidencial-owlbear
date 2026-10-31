@@ -35,6 +35,9 @@ export type RitualVisual = {
   dados?:{nome:string;dados:string}[];
 };
 export type ConteudoFicha = {
+  transformacaoNpc?: {
+  ativa: "original" | "transformada";
+} | null;
   municoes?: MunicaoVisual[];
   nome:string;foto?:string;afinidade?:string;elemento?:string;
   classe?:string;nivel?:number;nex?:number;

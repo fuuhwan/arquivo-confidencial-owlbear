@@ -23,7 +23,7 @@ import D20Icon from "./components/ficha-tematica/D20Icon";
 import {
   dadosPericiaCriatura,
 } from "./lib/pericias-criatura";
-
+import { transformarNpc } from "./lib/transformar-npc";
 
 import "./components/ficha-tematica/base-ficha.css";
 import "./FichaTokenTematica.css";
@@ -160,6 +160,39 @@ const travaIniciativa = useRef(false);
   }
   const f = conteudo;
   const afinidade = (f?.afinidade || f?.elemento || "nenhuma").trim().toLowerCase();
+  async function alternarFormaNpc() {
+  const forma = conteudo?.transformacaoNpc;
+
+  if (
+    !forma ||
+    trava.current ||
+    salvando ||
+    rolandoIniciativa
+  ) {
+    return;
+  }
+
+  trava.current = true;
+  setSalvando(true);
+  setErroEdicao("");
+
+  try {
+    await transformarNpc(
+      combateId,
+      p.id,
+      forma.ativa === "original" ? "transformada" : "original",
+    );
+  } catch (falha) {
+    setErroEdicao(
+      falha instanceof Error
+        ? falha.message
+        : "Não foi possível transformar o NPC.",
+    );
+  } finally {
+    trava.current = false;
+    setSalvando(false);
+  }
+}
   const rolagem = useRolagemFicha({combateId,participanteId:p.id,tipo:p.tipo,nome:p.nome,afinidade});
   async function rolarIniciativa() {
   if (
@@ -250,6 +283,32 @@ const texto = teste(
       <div><h2>{p.nome}</h2><p>{p.tipo === "criatura" ? "Criatura / NPC" : `${f?.classe || "Personagem"} · Nível ${numero(f?.nivel)} · NEX ${numero(f?.nex)}%`}</p>
       <small>{afinidade === "nenhuma" ? "Sem afinidade" : afinidade.toUpperCase()}</small></div>
     </header>
+    {f?.transformacaoNpc && (
+  <div style={{ marginBottom: 12 }}>
+    <button
+      type="button"
+      disabled={
+        salvando ||
+        rolagem.enviando ||
+        rolandoIniciativa
+      }
+      onClick={() => void alternarFormaNpc()}
+    >
+      {salvando
+        ? "Aguardando confirmação…"
+        : f.transformacaoNpc.ativa === "transformada"
+          ? "Voltar à forma original"
+          : "Transformar ficha"}
+    </button>
+
+    <p>
+      Forma:{" "}
+      {f.transformacaoNpc.ativa === "transformada"
+        ? "Transformada"
+        : "Original"}
+    </p>
+  </div>
+)}
     <div className="ow-turno">
  <div className="ow-controle-iniciativa">
   <span>
