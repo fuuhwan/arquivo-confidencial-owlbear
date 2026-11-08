@@ -35,6 +35,62 @@ export type RitualVisual = {
   dados?:{nome:string;dados:string}[];
 };
 export type ConteudoFicha = {
+  sistemaCombate?: "normal" | "ordem2";
+possuiOrdem2?: boolean;
+
+ordem2Combate?: {
+  classe?: string;
+  nivel?: number;
+  nex?: number;
+  afinidade?: string;
+  pontosArmadura?: number;
+
+  atributos: {
+    fisico: number;
+    mente: number;
+    presenca: number;
+  };
+
+  pericias: {
+    nome: string;
+    atributo: "fisico" | "mente" | "presenca";
+    treino: number;
+    passo?: number | null;
+    dadosExtras?: string;
+    especialidadeAptidao?: string;
+  }[];
+
+  combateOrdem2?: {
+    id: string;
+    nome: string;
+    dano: string;
+    tipo: string;
+    rolagemDano: "" | "RA" | "RB";
+    danosAdicionais: {
+      dano: string;
+      tipo: string;
+    }[];
+  }[];
+
+  habilidades?: {
+    id: string;
+    nome: string;
+    descricao?: string;
+  }[];
+
+  rituais?: {
+    id: string;
+    nome: string;
+    descricao?: string;
+    descricaoRitual?: string;
+    detalhes: Record<string, string>;
+    dadosRituais?: {
+      nome: string;
+      dados: string;
+    }[];
+    imagens?: string[];
+  }[];
+} | null;
   transformacaoNpc?: {
   ativa: "original" | "transformada";
 } | null;

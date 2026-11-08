@@ -1,13 +1,21 @@
 import { onValue, ref, remove, serverTimestamp, set } from 'firebase/database';
 import { auth, database } from './firebase';
 export type CampoRecurso='vida'|'determinacao'|'vidaTemporaria'|'determinacaoTemporaria';
-export async function editarRecurso(combateId:string,participanteId:string,campo:CampoRecurso,valor:number,modo:'somar'|'definir'='somar'):Promise<void> {
+export async function editarRecurso(
+  combateId: string,
+  participanteId: string,
+  campo: CampoRecurso,
+  valor: number,
+  modo: "somar" | "definir" = "somar",
+  sistema: "normal" | "ordem2" = "normal",
+): Promise<void> {
+  
   const usuario=auth.currentUser;
   if(!usuario)throw new Error('Entre na sua conta.');
   if(!Number.isSafeInteger(valor)||(modo==='somar'&&valor===0))throw new Error('Informe um número inteiro válido.');
   if(campo.endsWith('Temporaria')&&(modo!=='definir'||valor<0))throw new Error('Temporários devem ser um total inteiro a partir de zero.');
   const destino=ref(database,`edicoesRecursosCombate/${crypto.randomUUID()}`);
-  await set(destino,{uid:usuario.uid,combateId,participanteId,campo,valor,modo,quando:serverTimestamp(),status:'pendente'});
+  await set(destino,{uid:usuario.uid,combateId,sistema,participanteId,campo,valor,modo,quando:serverTimestamp(),status:'pendente'});
   await new Promise<void>((resolve,reject)=>{
     let terminou=false;let desligar:()=>void=()=>{};
     function finalizar(erro?:Error,limpar=false) {

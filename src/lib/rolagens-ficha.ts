@@ -68,7 +68,7 @@ export function ataquePersonagem(a:AtaqueVisual,modo:'ataque'|'dano'|'critico'='
   }
   return linhas.join('\n');
 }
-export type ContextoRolagem={combateId:string;participanteId:string;tipo:'jogador'|'criatura';nome:string;afinidade:string};
+export type ContextoRolagem={combateId:string;participanteId:string;tipo:'jogador'|'criatura';nome:string;afinidade:string;sistema?: "normal" | "ordem2";};
 export async function registrarResultado(c:ContextoRolagem,texto:string,consumir=false) {
   const u=auth.currentUser;
   if(!u)throw new Error('Entre na sua conta.');
@@ -76,6 +76,32 @@ export async function registrarResultado(c:ContextoRolagem,texto:string,consumir
   const meta=(await get(ref(database,'combatePublico'))).val();
   if(meta?.id!==c.combateId||meta?.participantes?.[c.participanteId]?.tipo!==c.tipo)throw new Error('O combate mudou. Reabra a ficha.');
   if(consumir&&!(meta.participantes[c.participanteId].acoes>0))throw new Error('Sem ações disponíveis.');
+  if (c.sistema) {
+  const publicado = await get(
+    ref(
+      database,
+      `combateConteudos/${c.combateId}/${
+        meta?.participantes?.[c.participanteId]?.conteudoHash
+      }/json`,
+    ),
+  );
+
+  const json = publicado.val();
+
+  if (typeof json !== "string") {
+    throw new Error("A ficha ainda não foi publicada.");
+  }
+
+  const fichaPublicada = JSON.parse(json);
+
+  if (
+    (fichaPublicada.sistemaCombate ?? "normal") !== c.sistema
+  ) {
+    throw new Error(
+      "O modelo da ficha mudou. Aguarde a atualização antes de rolar.",
+    );
+  }
+}
   if(auth.currentUser?.uid!==u.uid)throw new Error('A conta foi alterada.');
   const afinidade=['sangue','morte','energia','conhecimento','medo'].includes(c.afinidade)?c.afinidade:'nenhuma';
   const key=push(ref(database,'rolagens')).key!;

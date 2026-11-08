@@ -24,7 +24,8 @@ import {
   dadosPericiaCriatura,
 } from "./lib/pericias-criatura";
 import { transformarNpc } from "./lib/transformar-npc";
-
+import PainelOrdem2 from "./PainelOrdem2";
+import { pedirOperacaoFicha } from "./lib/pedido-ficha";
 import "./components/ficha-tematica/base-ficha.css";
 import "./FichaTokenTematica.css";
 
@@ -99,6 +100,9 @@ const travaIniciativa = useRef(false);
   const [aba, setAba] = useState<Aba>(() => { const salvo=sessionStorage.getItem(`aba-ficha-${combateId}-${p.id}`); return ABAS.some(([a])=>a===salvo)?salvo as Aba:"atributos"; });
   const [salvando, setSalvando] = useState(false);
   const trava = useRef(false);
+const [trocandoModelo, setTrocandoModelo] = useState(false);
+const [erroModelo, setErroModelo] = useState("");
+const travaModelo = useRef(false);
 
   useEffect(() => {
     let encerrado = false;
@@ -274,10 +278,116 @@ const texto = teste(
   const pd = p.recursos?.determinacao;
   const pdMax = p.recursos?.determinacaoMax;
   const temPd = p.tipo === "jogador" && typeof pd === "number" && typeof pdMax === "number";
+async function trocarModelo(sistema: "normal" | "ordem2") {
+  if (
+    travaModelo.current ||
+    salvando ||
+    rolagem.enviando ||
+    rolandoIniciativa
+  ) {
+    return;
+  }
 
+  travaModelo.current = true;
+  setTrocandoModelo(true);
+  setErroModelo("");
+
+  try {
+    await pedirOperacaoFicha(
+      combateId,
+      p.id,
+      "modeloFicha",
+      sistema,
+    );
+  } catch (falha) {
+    setErroModelo(
+      falha instanceof Error
+        ? falha.message
+        : "Não foi possível trocar o modelo.",
+    );
+  } finally {
+    travaModelo.current = false;
+    setTrocandoModelo(false);
+  }
+}
+
+const seletorModelo = p.tipo === "jogador" && (
+  <div style={{ marginBottom: 16 }}>
+    <label>
+      Modelo da ficha{" "}
+
+      <select
+        value={f?.sistemaCombate ?? "normal"}
+        disabled={
+          carregando ||
+          !f ||
+          trocandoModelo ||
+          salvando ||
+          rolagem.enviando ||
+          rolandoIniciativa
+        }
+        onChange={(evento) =>
+          void trocarModelo(
+            evento.target.value as "normal" | "ordem2",
+          )
+        }
+      >
+        <option value="normal">Ficha normal</option>
+
+        <option
+          value="ordem2"
+          disabled={!f?.possuiOrdem2 && !f?.ordem2Combate}
+        >
+          Ordem 2
+        </option>
+      </select>
+    </label>
+
+    {trocandoModelo && (
+      <p role="status">Aguardando troca da ficha…</p>
+    )}
+
+    {erroModelo && <p role="alert">{erroModelo}</p>}
+  </div>
+);
+
+if (
+  p.tipo === "jogador" &&
+  f?.sistemaCombate === "ordem2"
+) {
+  return (
+    <article
+      className="pl-root frc-ficha ow-ficha"
+      data-afinidade={
+        f.ordem2Combate?.afinidade ?? afinidade
+      }
+      style={tema(f.ordem2Combate?.afinidade ?? afinidade)}
+    >
+      {seletorModelo}
+
+      {carregando ? (
+        <p>Carregando ficha…</p>
+      ) : (
+        <PainelOrdem2
+          key={`${combateId}/${p.id}/ordem2`}
+          combateId={combateId}
+          participanteId={p.id}
+          nome={p.nome}
+          ficha={f}
+          vida={p.recursos?.vida ?? 0}
+          vidaMax={p.recursos?.vidaMax ?? 0}
+          determinacao={p.recursos?.determinacao ?? 0}
+          determinacaoMax={p.recursos?.determinacaoMax ?? 0}
+          acoes={p.acoes ?? 2}
+        />
+      )}
+    </article>
+  );
+}
   return <article className="pl-root frc-ficha ow-ficha" data-operacao-pendente={
   salvando || rolagem.enviando || rolandoIniciativa
 } data-afinidade={afinidade} style={tema(afinidade)}>
+  {seletorModelo}
     <header className="frc-identidade">
       {foto && <img src={foto} alt={p.nome} onError={() => setFoto("")} />}
       <div><h2>{p.nome}</h2><p>{p.tipo === "criatura" ? "Criatura / NPC" : `${f?.classe || "Personagem"} · Nível ${numero(f?.nivel)} · NEX ${numero(f?.nex)}%`}</p>
