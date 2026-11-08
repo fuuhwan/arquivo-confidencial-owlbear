@@ -1,3 +1,7 @@
+
+import type {
+  EstadoCriaturaOrdem2,
+} from "./criatura-ordem2/criatura";
 export type MunicaoVisual = {
   id: string;
   nome: string;
@@ -35,6 +39,8 @@ export type RitualVisual = {
   dados?:{nome:string;dados:string}[];
 };
 export type ConteudoFicha = {
+    sistemaFicha?: "normal" | "ordem2";
+  ordem2?: EstadoCriaturaOrdem2 | null;
   sistemaCombate?: "normal" | "ordem2";
 possuiOrdem2?: boolean;
 
@@ -84,20 +90,6 @@ ordem2Combate?: {
       dano: string;
       tipo: string;
     }[];
-    equipamento?: {
-  id: string;
-  nome: string;
-  quantidade?: number;
-  imagens?: string[];
-  descricao?: string;
-  detalhes: Record<string, string>;
-}[];
-
-efeitosAtivos?: {
-  id?: string;
-  nome?: string;
-  descricao?: string;
-}[];
   }[];
 
   habilidades?: {

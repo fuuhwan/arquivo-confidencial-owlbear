@@ -28,6 +28,8 @@ import PainelOrdem2 from "./PainelOrdem2";
 import { pedirOperacaoFicha } from "./lib/pedido-ficha";
 import "./components/ficha-tematica/base-ficha.css";
 import "./FichaTokenTematica.css";
+import PainelCriaturaOrdem2 from "./PainelCriaturaOrdem2";
+
 
 export type ParticipanteVisual = {
   id: string;
@@ -103,6 +105,21 @@ const travaIniciativa = useRef(false);
 const [trocandoModelo, setTrocandoModelo] = useState(false);
 const [erroModelo, setErroModelo] = useState("");
 const travaModelo = useRef(false);
+const chaveModeloCriatura =
+  `modelo-criatura-${combateId}-${p.id}`;
+
+const [
+  modeloCriaturaEscolhido,
+  setModeloCriaturaEscolhido,
+] = useState<"normal" | "ordem2" | null>(() => {
+  const salvo = sessionStorage.getItem(
+    chaveModeloCriatura,
+  );
+
+  return salvo === "normal" || salvo === "ordem2"
+    ? salvo
+    : null;
+});
 
   useEffect(() => {
     let encerrado = false;
@@ -311,7 +328,7 @@ async function trocarModelo(sistema: "normal" | "ordem2") {
   }
 }
 
-const seletorModelo = p.tipo === "jogador" && (
+const seletorModeloJogador = p.tipo === "jogador" && (
   <div style={{ marginBottom: 16 }}>
     <label>
       Modelo da ficha{" "}
@@ -350,6 +367,187 @@ const seletorModelo = p.tipo === "jogador" && (
     {erroModelo && <p role="alert">{erroModelo}</p>}
   </div>
 );
+const modeloCriatura =
+  modeloCriaturaEscolhido ??
+  f?.sistemaFicha ??
+  "normal";
+
+const seletorModelo =
+  p.tipo === "jogador" ? (
+    seletorModeloJogador
+  ) : (
+    <div style={{ marginBottom: 16 }}>
+      <label>
+        Modelo da criatura{" "}
+
+        <select
+          value={modeloCriatura}
+          disabled={
+            carregando ||
+            !f ||
+            salvando ||
+            rolagem.enviando ||
+            rolandoIniciativa
+          }
+          onChange={(evento) => {
+            const modelo = evento.target.value;
+
+            if (
+              modelo !== "normal" &&
+              modelo !== "ordem2"
+            ) {
+              return;
+            }
+
+            setModeloCriaturaEscolhido(modelo);
+
+            sessionStorage.setItem(
+              chaveModeloCriatura,
+              modelo,
+            );
+          }}
+        >
+          <option value="normal">Ficha normal</option>
+
+          <option
+            value="ordem2"
+            disabled={!f?.ordem2}
+          >
+            Ordem 2
+          </option>
+        </select>
+      </label>
+
+      {f && !f.ordem2 && (
+        <p>
+          Abra esta criatura no site e selecione
+          Ordem 2 para salvar essa versão.
+        </p>
+      )}
+    </div>
+  );
+  if (
+  p.tipo === "criatura" &&
+  f &&
+  modeloCriatura === "ordem2"
+) {
+  return (
+    <article
+      className="pl-root frc-ficha ow-ficha"
+      data-afinidade={afinidade}
+      style={tema(afinidade)}
+      data-operacao-pendente={
+        salvando || rolagem.enviando
+      }
+    >
+      {seletorModelo}
+
+      <header className="frc-identidade">
+        {foto && (
+          <img
+            src={foto}
+            alt={p.nome}
+            onError={() => setFoto("")}
+          />
+        )}
+
+        <div>
+          <h2>{p.nome}</h2>
+          <p>Criatura / NPC · Ordem 2</p>
+
+          <small>
+            {afinidade === "nenhuma"
+              ? "Sem afinidade"
+              : afinidade.toUpperCase()}
+          </small>
+        </div>
+      </header>
+
+      <div className="ow-turno">
+        <span>
+          Iniciativa <b>{p.iniciativa}</b>
+        </span>
+
+        <ControleAcoes
+          key={`${combateId}/${p.id}`}
+          combateId={combateId}
+          participanteId={p.id}
+          vez={vez}
+          acoes={p.acoes ?? 2}
+        />
+
+        {p.id === ativo && <strong>NA VEZ</strong>}
+      </div>
+
+      {typeof vida === "number" &&
+        typeof vidaMax === "number" && (
+          <RecursoFicha
+            campo="vida"
+            atual={vida}
+            maximo={vidaMax}
+            permiteTemporario={false}
+            salvando={salvando}
+            editar={alterar}
+          />
+        )}
+
+      {salvando && (
+        <p role="status">
+          Aguardando confirmação do mestre…
+        </p>
+      )}
+
+      {erroEdicao && (
+        <p className="ow-erro" role="alert">
+          {erroEdicao}
+        </p>
+      )}
+
+      {erroLeitura && (
+        <p className="ow-erro" role="alert">
+          {erroLeitura}
+        </p>
+      )}
+
+      {f.ordem2 ? (
+        <PainelCriaturaOrdem2
+          estado={f.ordem2}
+          executar={rolagem.executar}
+          enviando={rolagem.enviando || salvando}
+          acoes={p.acoes ?? 2}
+        />
+      ) : (
+        <p role="alert">
+          Esta criatura ainda não possui uma versão
+          Ordem 2 publicada. Selecione Ficha normal
+          ou salve a versão Ordem 2 no site.
+        </p>
+      )}
+
+      {rolagem.resultado &&
+        createPortal(
+          <div
+            className="pl-root notificacao-compartilhada"
+            data-afinidade={afinidade}
+          >
+            <NotificacaoRolagem
+              texto={rolagem.resultado}
+              personagem={p.nome}
+              afinidade={afinidade}
+              fechar={rolagem.limpar}
+            />
+          </div>,
+          document.body,
+        )}
+
+      {rolagem.erro && (
+        <p className="ow-erro" role="alert">
+          {rolagem.erro}
+        </p>
+      )}
+    </article>
+  );
+}
 
 if (
   p.tipo === "jogador" &&

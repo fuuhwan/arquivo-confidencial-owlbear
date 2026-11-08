@@ -460,3 +460,37 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+.ow-ficha .ow-o2-criatura-pericia {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--afinidade-cor, #a58b36);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.ow-ficha .ow-o2-criatura-pericia > div {
+  min-width: 0;
+}
+
+.ow-ficha .ow-o2-criatura-pericia small {
+  display: block;
+  margin-top: 6px;
+}
+
+.ow-ficha .ow-o2-criatura-ataque {
+  padding: 12px;
+  margin-top: 12px;
+  border: 1px solid var(--afinidade-cor, #a58b36);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.ow-ficha .ow-o2-criatura-ataque button {
+  margin: 4px;
+}
+
