@@ -357,12 +357,12 @@ if (
 ) {
   return (
     <article
-      className="pl-root frc-ficha ow-ficha"
-      data-afinidade={
-        f.ordem2Combate?.afinidade ?? afinidade
-      }
-      style={tema(f.ordem2Combate?.afinidade ?? afinidade)}
-    >
+  className="pl-root frc-ficha ow-ficha ow-ordem2-resumo"
+  data-afinidade={(
+    f.ordem2Combate?.afinidade ?? afinidade
+  ).trim().toLowerCase()}
+  style={tema(f.ordem2Combate?.afinidade ?? afinidade)}
+>
       {seletorModelo}
 
       {carregando ? (

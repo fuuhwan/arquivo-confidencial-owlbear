@@ -39,6 +39,20 @@ export type ConteudoFicha = {
 possuiOrdem2?: boolean;
 
 ordem2Combate?: {
+    equipamento?: {
+    id: string;
+    nome: string;
+    quantidade?: number;
+    imagens?: string[];
+    descricao?: string;
+    detalhes: Record<string, string>;
+  }[];
+
+  efeitosAtivos?: {
+    id?: string;
+    nome?: string;
+    descricao?: string;
+  }[];
   classe?: string;
   nivel?: number;
   nex?: number;
@@ -70,6 +84,20 @@ ordem2Combate?: {
       dano: string;
       tipo: string;
     }[];
+    equipamento?: {
+  id: string;
+  nome: string;
+  quantidade?: number;
+  imagens?: string[];
+  descricao?: string;
+  detalhes: Record<string, string>;
+}[];
+
+efeitosAtivos?: {
+  id?: string;
+  nome?: string;
+  descricao?: string;
+}[];
   }[];
 
   habilidades?: {

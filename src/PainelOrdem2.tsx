@@ -1,12 +1,19 @@
 import { useRef, useState } from "react";
 import type { ConteudoFicha } from "./lib/modelos-ficha";
 import { pedirOperacaoFicha } from "./lib/pedido-ficha";
-import { registrarResultado } from "./lib/rolagens-ficha";
-import RecursoFicha from "./RecursoFicha";
+import {
+  expressao,
+  registrarResultado,
+} from "./lib/rolagens-ficha";
+import RecursoFicha from "./RecursoResumoOrdem2";
 import { editarRecurso } from "./lib/editar-recurso";
 import type { CampoRecurso } from "./lib/editar-recurso";
 import AbasFicha from "./AbasFicha";
 import useRolagemFicha from "./useRolagemFicha";
+import D20Icon from "./components/ficha-tematica/D20Icon";
+import { Etiquetas } from "./AbasFicha";
+
+
 
 type Props = {
   combateId: string;
@@ -64,6 +71,14 @@ export default function PainelOrdem2({
   acoes,
 }: Props) {
   const [aba, setAba] = useState("atributos");
+  const [busca, setBusca] = useState("");
+const [expressaoLivre, setExpressaoLivre] = useState("");
+
+function filtrar(nome: string) {
+  return nome
+    .toLocaleLowerCase("pt-BR")
+    .includes(busca.toLocaleLowerCase("pt-BR"));
+}
   const [ocupado, setOcupado] = useState(false);
   const [erro, setErro] = useState("");
   const [pavor, setPavor] = useState(false);
@@ -232,7 +247,21 @@ export default function PainelOrdem2({
 
   return (
     <div>
-      <h3>{nome} — Ordem 2</h3>
+      <header className="frc-identidade">
+  {ficha.foto && (
+    <img src={ficha.foto} alt={nome} />
+  )}
+
+  <div>
+    <h2>{nome}</h2>
+
+    <p>
+      {o2.classe || ficha.classe || "Personagem"}
+      {" · "}Nível {o2.nivel ?? ficha.nivel ?? 1}
+      {" · "}NEX {o2.nex ?? ficha.nex ?? 0}%
+    </p>
+  </div>
+</header>
 
       <RecursoFicha
         campo="vida"
@@ -256,67 +285,92 @@ export default function PainelOrdem2({
         editar={alterar}
       />
 
-      <p>
-        Defesa: {ficha.defesa ?? "—"} · PA:{" "}
-        {o2.pontosArmadura ?? 0} · Deslocamento:{" "}
-        {ficha.deslocamento ?? "—"}
-      </p>
-
-      <label
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-          marginBottom: 16,
-        }}
-      >
-        <input
-          type="checkbox"
-          checked={pavor}
-          disabled={ocupado}
-          onChange={(evento) => setPavor(evento.target.checked)}
-        />
-        D6 — Dado de Pavor
-      </label>
+     
 
       <nav className="frc-abas">
-        {[
-          ["atributos", "Atributos"],
-          ["pericias", "Perícias"],
-          ["combate", "Combate"],
-          ["habilidades", "Habilidades"],
-          ["rituais", "Rituais"],
-        ].map(([id, titulo]) => (
-          <button
-            key={id}
-            type="button"
-            aria-pressed={aba === id}
-            onClick={() => setAba(id)}
-          >
-            {titulo}
-          </button>
-        ))}
-      </nav>
+  {[
+    ["atributos", "Atributos"],
+    ["combate", "Combate"],
+    ["habilidades", "Habilidades"],
+    ["efeitos", "Efeitos"],
+    ["rituais", "Rituais"],
+    ["pericias", "Perícias"],
+    ["itens", "Itens"],
+  ].map(([id, titulo]) => (
+    <button
+      key={id}
+      type="button"
+      aria-pressed={aba === id}
+      onClick={() => {
+        setAba(id);
+        setBusca("");
+      }}
+    >
+      {titulo}
+    </button>
+  ))}
+</nav>
 
       {erro && <p role="alert">{erro}</p>}
       {ocupado && <p role="status">Aguardando confirmação…</p>}
 
       <section className="pl-painel">
+        <input
+  className="pl-busca"
+  type="search"
+  placeholder="Pesquisar…"
+  aria-label="Pesquisar na ficha"
+  value={busca}
+  onChange={(evento) => setBusca(evento.target.value)}
+/>
         {aba === "atributos" && (
-          <div className="ow-atributos-simples">
-            {ATRIBUTOS.map(([chave, titulo]) => (
-              <button
-                key={chave}
-                type="button"
-                disabled={ocupado}
-                onClick={() => rolar("atributo", chave)}
-              >
-                <small>{titulo}</small>
-                <strong>D{o2.atributos[chave]}</strong>
-              </button>
-            ))}
-          </div>
-        )}
+  <>
+    <label className="ow-o2-pavor">
+      <span className="ow-o2-pavor-dado">D6</span>
+      <span>Dado de Pavor</span>
+
+      <input
+        type="checkbox"
+        checked={pavor}
+        disabled={ocupado}
+        onChange={(evento) =>
+          setPavor(evento.target.checked)
+        }
+      />
+    </label>
+
+    <div className="ow-atributos-simples">
+      {ATRIBUTOS.map(([chave, titulo]) => (
+        <button
+          key={chave}
+          type="button"
+          disabled={ocupado}
+          onClick={() => rolar("atributo", chave)}
+        >
+          <small>{titulo}</small>
+          <strong>D{o2.atributos[chave]}</strong>
+        </button>
+      ))}
+    </div>
+
+    <div className="frc-defesas">
+      <div>
+        <strong>{ficha.defesa ?? "—"}</strong>
+        Defesa
+      </div>
+
+      <div>
+        <strong>{o2.pontosArmadura ?? 0}</strong>
+        Pontos de armadura
+      </div>
+
+      <div>
+        <strong>{ficha.deslocamento ?? "—"}</strong>
+        Deslocamento
+      </div>
+    </div>
+  </>
+)}
 
         {aba === "pericias" &&
           o2.pericias.map((pericia, indice) => (
@@ -349,38 +403,196 @@ export default function PainelOrdem2({
             </article>
           ))}
 
-        {aba === "combate" &&
-          (o2.combateOrdem2 ?? []).map((ataque) => (
-            <details
-              key={ataque.id}
-              className="pl-registro-salvo"
-            >
-              <summary>{ataque.nome}</summary>
+        {aba === "combate" && (
+  <>
+    <form
+      className="pl-rolagem-livre"
+      onSubmit={(evento) => {
+        evento.preventDefault();
 
+        void operar(async () => {
+          await rolagensLivres.executar(() => {
+            const resultado = expressao(expressaoLivre);
+
+            return (
+              `Dados livres: = ${resultado.total}\n` +
+              resultado.detalhes
+            );
+          });
+        });
+      }}
+    >
+      <input
+        aria-label="Expressão de dados"
+        placeholder="Rolar dados — 2d6+3"
+        value={expressaoLivre}
+        onChange={(evento) =>
+          setExpressaoLivre(evento.target.value)
+        }
+      />
+
+      <button
+        type="submit"
+        disabled={
+          ocupado ||
+          rolagensLivres.enviando ||
+          !expressaoLivre.trim()
+        }
+      >
+        <D20Icon tamanho={18} /> Rolar
+      </button>
+    </form>
+
+    {(o2.combateOrdem2 ?? [])
+      .filter((ataque) => filtrar(ataque.nome))
+      .map((ataque) => {
+        const item = ataque.id.startsWith("arma:")
+          ? o2.equipamento?.find(
+              (registro) =>
+                registro.id === ataque.id.slice(5),
+            )
+          : undefined;
+
+        const elementos = [
+          ataque.tipo,
+          ...ataque.danosAdicionais.map(
+            (extra) => extra.tipo,
+          ),
+        ].join(" ");
+
+        return (
+          <details
+            key={ataque.id}
+            className="pl-registro-salvo"
+          >
+            <summary className="pl-ataque-topo">
+              <span
+                className="pl-ataque-chevron"
+                aria-hidden="true"
+              >
+                ⌄
+              </span>
+
+              {item?.imagens?.[0] && (
+                <img
+                  className="pl-ataque-foto"
+                  src={item.imagens[0]}
+                  alt=""
+                />
+              )}
+
+              <span className="pl-ataque-titulo">
+                <strong>
+                  {ataque.nome}
+                  {" "}
+                  <Etiquetas texto={elementos} />
+                </strong>
+
+                <small>
+                  Dano: {ataque.dano}
+                  {ataque.rolagemDano
+                    ? ` + ${ataque.rolagemDano}`
+                    : ""}
+                  {" · "}Crítico Ordem 2
+                </small>
+              </span>
+
+              <button
+                type="button"
+                className="pl-ataque-dado"
+                title="Rolar teste e dano · 1 ação"
+                aria-label={`Rolar ${ataque.nome}`}
+                disabled={ocupado || acoes <= 0}
+                onClick={(evento) => {
+                  evento.preventDefault();
+                  evento.stopPropagation();
+
+                  rolar("ataque", ataque.id);
+                }}
+                onKeyDown={(evento) =>
+                  evento.stopPropagation()
+                }
+              >
+                <D20Icon tamanho={28} />
+              </button>
+            </summary>
+
+            <div className="pl-ataque-informacoes">
               <p>
                 Dano: {ataque.dano}
                 {ataque.rolagemDano
                   ? ` + ${ataque.rolagemDano}`
                   : ""}
-                {" · "}
-                {ataque.tipo}
+                {" · "}{ataque.tipo}
               </p>
 
-              {ataque.danosAdicionais.map((extra, indice) => (
-                <p key={indice}>
-                  Adicional: {extra.dano} · {extra.tipo}
-                </p>
-              ))}
+              {ataque.danosAdicionais.map(
+                (extra, indice) => (
+                  <p key={indice}>
+                    Adicional: {extra.dano}
+                    {" · "}{extra.tipo}
+                  </p>
+                ),
+              )}
+            </div>
+          </details>
+        );
+      })}
 
-              <button
-                type="button"
-                disabled={ocupado || acoes <= 0}
-                onClick={() => rolar("ataque", ataque.id)}
-              >
-                Rolar ataque · 1 ação
-              </button>
-            </details>
-          ))}
+    <h3 className="ow-o2-subtitulo">MUNIÇÕES</h3>
+
+    {(o2.equipamento ?? []).some((item) =>
+      /munic/.test(
+        (item.detalhes.tipo ?? "")
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase(),
+      ),
+    ) ? (
+      (o2.equipamento ?? [])
+        .filter((item) =>
+          /munic/.test(
+            (item.detalhes.tipo ?? "")
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+              .toLowerCase(),
+          ),
+        )
+        .map((item) => (
+          <article
+            key={item.id}
+            className="pl-registro-salvo"
+          >
+            <strong>
+              {item.nome} ×{item.quantidade ?? 1}
+            </strong>
+          </article>
+        ))
+    ) : (
+      <p>Nenhuma munição adicionada.</p>
+    )}
+
+    <h3 className="ow-o2-subtitulo">
+      RITUAIS FAVORITOS
+    </h3>
+
+    {fichaRituais.rituais?.some(
+      (ritual) => ritual.favorito,
+    ) ? (
+      <AbasFicha
+        aba="rituais"
+        ficha={fichaRituais}
+        tipo="jogador"
+        acoes={acoes}
+        executar={rolagensLivres.executar}
+        enviando={ocupado || rolagensLivres.enviando}
+        somenteFavoritos
+      />
+    ) : (
+      <p>Nenhum ritual favorito publicado.</p>
+    )}
+  </>
+)}
 
         {aba === "habilidades" &&
           (o2.habilidades ?? []).map((habilidade) => (
@@ -474,6 +686,63 @@ export default function PainelOrdem2({
                 : ""}
             </pre>
           </details>
+          {aba === "efeitos" && (
+  <>
+    {(o2.efeitosAtivos ?? [])
+      .filter((efeito) => filtrar(efeito.nome ?? ""))
+      .map((efeito, indice) => (
+        <details
+          key={efeito.id ?? indice}
+          className="pl-registro-salvo"
+        >
+          <summary>{efeito.nome || "Efeito"}</summary>
+
+          <p style={{ whiteSpace: "pre-wrap" }}>
+            {efeito.descricao}
+          </p>
+        </details>
+      ))}
+
+    {!o2.efeitosAtivos?.length && (
+      <p>Nenhum efeito ativo.</p>
+    )}
+  </>
+)}
+
+{aba === "itens" && (
+  <>
+    {(o2.equipamento ?? [])
+      .filter((item) => filtrar(item.nome))
+      .map((item) => (
+        <details
+          key={item.id}
+          className="pl-registro-salvo"
+        >
+          <summary>
+            {item.nome} ×{item.quantidade ?? 1}
+          </summary>
+
+          {item.imagens?.[0] && (
+            <img
+              src={item.imagens[0]}
+              alt={item.nome}
+              style={{
+                display: "block",
+                maxWidth: "100%",
+                maxHeight: 240,
+                objectFit: "contain",
+                marginBlock: 12,
+              }}
+            />
+          )}
+
+          <p style={{ whiteSpace: "pre-wrap" }}>
+            {item.descricao}
+          </p>
+        </details>
+      ))}
+  </>
+)}
         </section>
       )}
     </div>
